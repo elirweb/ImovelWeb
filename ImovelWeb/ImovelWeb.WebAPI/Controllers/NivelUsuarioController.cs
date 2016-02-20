@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace ImovelWeb.WebAPI.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "GET")] // definindo o cabecalho de origens para receber metodo get 
-   
-    public class ImovelControllers : ApiController
+    public class NivelUsuarioController : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()
