@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,10 +43,25 @@
     <Compile Include="Entidade\EstadoBrasileiro.cs" />
     <Compile Include="Entidade\Status.cs" />
     <Compile Include="Entidade\StatusNivelUsuario.cs" />
+    <Compile Include="Interface\ICorretor.cs" />
+    <Compile Include="Interface\IEmpreendimento.cs" />
+    <Compile Include="Interface\IFoto.cs" />
+    <Compile Include="Interface\ImovelInterface.cs" />
+    <Compile Include="Interface\IPorcentagem.cs" />
+    <Compile Include="Interface\IRegistro.cs" />
+    <Compile Include="Interface\IRepositoryBase.cs" />
+    <Compile Include="Interface\IUnitOfWork.cs" />
+    <Compile Include="Interface\IUsuario.cs" />
+    <Compile Include="Interface\IVendaImovel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueObject\EnumSexo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ValueObject\Model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

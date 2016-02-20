@@ -1,7 +1,12 @@
 ﻿
 namespace ImovelWeb.DDD.ValueObject
 {
-    class EnumSexo
+    public enum EnumSexo
     {
+        Masculino = 1,
+        Feminino = 2
+
+
     }
+
 }

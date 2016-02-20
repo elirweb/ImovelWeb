@@ -30,8 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,6 +47,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositorioFoto.cs" />
+    <Compile Include="RepositoryBase.cs" />
+    <Compile Include="RepositoryCorretor.cs" />
+    <Compile Include="RepositoryEmpreendimento.cs" />
+    <Compile Include="RepositoryImobiliario.cs" />
+    <Compile Include="RepositoryImovel.cs" />
+    <Compile Include="RepositoryNivelUsuario.cs" />
+    <Compile Include="RepositoryPorcentagem.cs" />
+    <Compile Include="RepositoryRegistro.cs" />
+    <Compile Include="RepositoryUsuario.cs" />
+    <Compile Include="RepositoryVendaImovel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImovelWeb.DDD\ImovelWeb.DDD.csproj">
+      <Project>{4be07437-a404-499d-b13c-7813f08a728c}</Project>
+      <Name>ImovelWeb.DDD</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
