@@ -30,8 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,7 +45,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contato.cs" />
+    <Compile Include="Contexto.cs" />
+    <Compile Include="Corretor.cs" />
+    <Compile Include="Empreendimento.cs" />
+    <Compile Include="Foto.cs" />
+    <Compile Include="Imovel.cs" />
+    <Compile Include="MapFluent\ContatoMap.cs" />
+    <Compile Include="MapFluent\CorretorMap.cs" />
+    <Compile Include="MapFluent\EmpreendimentoMap.cs" />
+    <Compile Include="MapFluent\FotoMap.cs" />
+    <Compile Include="MapFluent\ImovelMap.cs" />
+    <Compile Include="MapFluent\NivelUsuarioMap.cs" />
+    <Compile Include="MapFluent\PorcentagemMap.cs" />
+    <Compile Include="MapFluent\RegistroMap.cs" />
+    <Compile Include="MapFluent\UsuarioMap.cs" />
+    <Compile Include="MapFluent\VendaImovelMap.cs" />
+    <Compile Include="NivelUsuario.cs" />
+    <Compile Include="Porcentagem.cs" />
+    <Compile Include="Programa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registro.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="VendaImovel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
