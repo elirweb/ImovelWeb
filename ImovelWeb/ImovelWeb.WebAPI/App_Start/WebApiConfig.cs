@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
+using System.Web.Http.Cors;
 
 namespace ImovelWeb.WebAPI
 {
@@ -11,7 +12,8 @@ namespace ImovelWeb.WebAPI
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
+            config.EnableCors(new EnableCorsAttribute("*", "*", "GET")); // configurando os enablecors
+        
             // Web API routes
             config.MapHttpAttributeRoutes();
 

@@ -3,6 +3,7 @@ using ImovelWeb.DDD.Interface;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using System.Data;
 namespace ImovelWeb.Repository
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T>, IDisposable, IUnitOfWork where T : class  
