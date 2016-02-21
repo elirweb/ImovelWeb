@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Foto";
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutAdmin.cshtml";
+  
+}
+@model DDDImovel.ValuesObject.Model.Foto
+
+<div id="main_container">
+    <div class="header">
+        <div class="logo">
+            <a href="#">
+                <img src="@Url.Content("~/Areas/Administrator/Content/images/logo.gif")" alt="" title="" border="0" /></a>
+        </div>
+    </div>
+    <div class="main_content">
+        <div class="menu">
+     
+        </div> 
+
+<div class="center_content">  
+    <div class="left_content">
+        <div class="sidebar_search">
+            <form>
+                <input type="text" name="" class="search_input" value="" placeholder="Empreendimento" />
+                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Administrator/Content/images/search.png")" />
+            </form>            
+    </div>
+    
+ @Html.Partial("~/Areas/Administrator/Views/Shared/_MenuCorretor.cshtml") 
+              
+    
+</div>  
+    
+<div class="right_content">            
+        <br /><br />
+<h2>Foto</h2> 
+                    
+<!-- montar o conteudo -->
+@using (Html.BeginForm("", "Admin/Foto", FormMethod.Post, new { @id = "FormFotos", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+ <table>
+     <tr>
+         <td colspan="2"><div id="resposta">@ViewBag.msg</div></td>
+     </tr>
+      <tr>
+         <td>@Html.LabelFor(model=>model.Imovel.EmpreendimentoID)</td>
+         <td>
+             @Html.DropDownList("EmpreendimentoID",   "Selecione...")
+         </td>
+     </tr>
+     <tr>
+         <td>@Html.LabelFor(model=>model.ImovelID)</td>
+         <td id="txtimovel"><select name="ImovelID" id="ImovelID"><option value="0">Selecione</option></select></td>
+     </tr>
+     <tr>
+         <td>
+             @Html.LabelFor(model=>model.NomeFoto)
+         </td>
+         <td>
+             @Html.TextBoxFor(model => model.NomeFoto, new {@class="txtlogin" })
+         </td>
+     </tr>
+     <tr>
+         <td colspan="2">
+             <input type="file" name="file" id="arquivo"   value="" />
+         </td>
+     </tr>
+     <tr>
+         <td colspan="2" style="text-align:right">
+             <input type="submit" name="enviar" id="btn_buttonLogar" value="Enviar" />
+         </td>
+     </tr>
+ </table>   
+}
+<!-- fim do conteudo -->                    
+
+</div>
+</div>               
+<div class="clear"></div>
+</div>
+</div>

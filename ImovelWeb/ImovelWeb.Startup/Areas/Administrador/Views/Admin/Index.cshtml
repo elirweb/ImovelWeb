@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Painel do Corretor";
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutAdmin.cshtml";
+    
+    }
+@model DDDImovel.ValuesObject.Model.Usuario
+<div id="MsgGeral" style="display:none"></div>
+<div id="CadCorretor" style="display:none">
+    @Html.Partial("~/Areas/Administrator/Views/Shared/_CadastroCorretor.cshtml")
+</div>
+<div id="EmailCadastro" style="display:none;">
+    @Html.Partial("~/Areas/Administrator/Views/Shared/_EmailCadastro.cshtml")
+</div>
+<div id="main_container">
+	<div class="header_login">
+        <div class="logo"><a href="#">
+            <img src="@Url.Content("~/Areas/Administrator/Content/images/logo.gif")" alt="" title="" border="0" /></a></div>
+        </div>
+        <div class="login_form">
+            <h3>Se identifique por favor para utilizar o Imovel</h3>
+            <a href="#" onclick="AbrirEmailCadastro()" class="forgot_pass">Esqueceu sua Senha</a> 
+         
+            @using (Html.BeginForm("", "/Admin/Index", FormMethod.Post, new { @id = "FormLogar" }))
+            {
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    <dl>
+                        <dd><div id="mensagem"></div></dd>
+                    </dl>
+                    <dl>
+                        <dd style="text-align:center;color:#ff0000;">@ViewBag.mensagem</dd>
+                    </dl>
+                    <dl>
+                        <dt><label for="email">@Html.LabelFor(model => model.Login)</label></dt>
+                        <dd>@Html.TextBoxFor(model => model.Login, new { @class = "txtlogin" })</dd>
+                    </dl>
+                    <dl>
+                        <dt><label for="password">@Html.LabelFor(model => model.Senha)</label></dt>
+                        <dd>@Html.PasswordFor(model => model.Senha, new  {@class="txtlogin" })</dd>
+                    </dl>
+                    <dl class="submit">
+                        <input type="button" name="btn_buttonLogar" id="btn_buttonLogar" value="Logar" onclick="ValidateLogar()" />
+                    </dl>
+                    <dl>
+                        <a href="#" onclick="AbrirFormCorretorCadastro()" class="forgot_pass">Se você não é cadastrado clique aqui</a>
+                    </dl>
+                </fieldset>
+                
+            }
+                
+
+        </div>  
+</div>		

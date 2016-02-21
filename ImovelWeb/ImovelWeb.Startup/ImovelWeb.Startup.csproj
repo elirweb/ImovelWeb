@@ -156,6 +156,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Administrador\AdministradorAreaRegistration.cs" />
+    <Compile Include="Areas\Administrador\Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,6 +166,61 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Content\css\style.css" />
+    <Content Include="Areas\Content\images\arrow.gif" />
+    <Content Include="Areas\Content\images\bg.jpg" />
+    <Content Include="Areas\Content\images\botleft.jpg" />
+    <Content Include="Areas\Content\images\botright.jpg" />
+    <Content Include="Areas\Content\images\bt_blue_center.gif" />
+    <Content Include="Areas\Content\images\bt_blue_left.gif" />
+    <Content Include="Areas\Content\images\bt_blue_r.gif" />
+    <Content Include="Areas\Content\images\bt_green_center.gif" />
+    <Content Include="Areas\Content\images\bt_green_left.gif" />
+    <Content Include="Areas\Content\images\bt_green_r.gif" />
+    <Content Include="Areas\Content\images\bt_red_center.gif" />
+    <Content Include="Areas\Content\images\bt_red_left.gif" />
+    <Content Include="Areas\Content\images\bt_red_r.gif" />
+    <Content Include="Areas\Content\images\bubble.png" />
+    <Content Include="Areas\Content\images\button.png" />
+    <Content Include="Areas\Content\images\buttonn.png" />
+    <Content Include="Areas\Content\images\buttony.png" />
+    <Content Include="Areas\Content\images\Certo-ou-Errado-300x137.jpg" />
+    <Content Include="Areas\Content\images\comment.png" />
+    <Content Include="Areas\Content\images\error.png" />
+    <Content Include="Areas\Content\images\footer_bg.jpg" />
+    <Content Include="Areas\Content\images\green_bt.gif" />
+    <Content Include="Areas\Content\images\green_bt_a.gif" />
+    <Content Include="Areas\Content\images\help.png" />
+    <Content Include="Areas\Content\images\indeziner_logo.gif" />
+    <Content Include="Areas\Content\images\info.png" />
+    <Content Include="Areas\Content\images\left.jpg" />
+    <Content Include="Areas\Content\images\list_bullet.gif" />
+    <Content Include="Areas\Content\images\login_bg.png" />
+    <Content Include="Areas\Content\images\logo.gif" />
+    <Content Include="Areas\Content\images\menu_bg.gif" />
+    <Content Include="Areas\Content\images\menu_bg.jpg" />
+    <Content Include="Areas\Content\images\menu_bg_a.gif" />
+    <Content Include="Areas\Content\images\minus.gif" />
+    <Content Include="Areas\Content\images\notice.png" />
+    <Content Include="Areas\Content\images\photo.png" />
+    <Content Include="Areas\Content\images\plus.gif" />
+    <Content Include="Areas\Content\images\red_bt.gif" />
+    <Content Include="Areas\Content\images\red_bt_a.gif" />
+    <Content Include="Areas\Content\images\right.jpg" />
+    <Content Include="Areas\Content\images\search.png" />
+    <Content Include="Areas\Content\images\sidebar_box_bottom.gif" />
+    <Content Include="Areas\Content\images\sidebar_box_top.gif" />
+    <Content Include="Areas\Content\images\sidebar_menu_top.gif" />
+    <Content Include="Areas\Content\images\sidebar_menu_top_a.gif" />
+    <Content Include="Areas\Content\images\trash.png" />
+    <Content Include="Areas\Content\images\user_edit.png" />
+    <Content Include="Areas\Content\images\user_logout.png" />
+    <Content Include="Areas\Content\images\valid.png" />
+    <Content Include="Areas\Content\images\warning.png" />
+    <Content Include="Areas\Content\script\jquery-1.7.1.min.js" />
+    <Content Include="Areas\Content\script\jquery.validate.unobtrusive.js" />
+    <Content Include="Areas\Content\script\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Areas\Content\script\script_js.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -170,6 +228,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Administrador\Views\web.config" />
+    <Content Include="Areas\Administrador\Views\Admin\Empreendimento.cshtml" />
+    <Content Include="Areas\Administrador\Views\Admin\Foto.cshtml" />
+    <Content Include="Areas\Administrador\Views\Admin\Home.cshtml" />
+    <Content Include="Areas\Administrador\Views\Admin\Imovel.cshtml" />
+    <Content Include="Areas\Administrador\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Admin\Porcentagem.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -192,15 +257,18 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Areas\Administrador\Views\Shared\_CadastroCorretor.cshtml" />
+    <Content Include="Areas\Administrador\Views\Shared\_EmailCadastro.cshtml" />
+    <Content Include="Areas\Administrador\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Administrador\Views\Shared\_MenuCorretor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Areas\Administrador\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

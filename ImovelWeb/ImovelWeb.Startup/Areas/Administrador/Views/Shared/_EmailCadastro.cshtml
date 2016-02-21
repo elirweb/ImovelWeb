@@ -1,0 +1,22 @@
+﻿@model DDDImovel.ValuesObject.Model.Corretor
+
+@using (Html.BeginForm("", "", FormMethod.Get, new { @id = "FormEmail" }))
+{ 
+ @Html.AntiForgeryToken()
+<table>
+    @Html.Hidden("senhacorretor","")
+    <tr>
+        <td colspan="2"><span class="txttitulo">Informe seu Email</span></td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(model=>model.Email)</td>
+        <td>@Html.TextBoxFor(model=>model.Email,new { @class = "txtlogin",@id="esqueciemail" })</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:right">
+            <input type="button" value="Enviar" id="btn_buttonLogar" onclick="EsqueceuEmailCorretor();" />&nbsp;&nbsp;
+            <input type="button" value="Fechar" onclick="Closed()" id="btn_buttonLogar" />
+        </td>
+    </tr>
+</table>   
+}

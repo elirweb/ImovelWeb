@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutAdmin.cshtml";
+  }
+
+
+@model DDDImovel.ValuesObject.Model.Porcentagem
+<div id="main_container">
+    <div class="header">
+        <div class="logo">
+            <a href="#">
+                <img src="@Url.Content("~/Areas/Administrator/Content/images/logo.gif")" alt="" title="" border="0" /></a>
+        </div>
+    </div>
+    <div class="main_content">
+        <div class="menu">
+     
+        </div> 
+
+<div class="center_content">  
+    <div class="left_content">
+        <div class="sidebar_search">
+            <form>
+                <input type="text" name="" class="search_input" value="" placeholder="Empreendimento" />
+                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Administrator/Content/images/search.png")" />
+            </form>            
+    </div>
+    
+ @Html.Partial("~/Areas/Administrator/Views/Shared/_MenuCorretor.cshtml") 
+    
+</div>  
+    
+<div class="right_content">            
+        <br /><br />
+<h2>Cadastro de Porcentagem</h2> 
+                    
+<!-- montar o conteudo -->
+@using (Html.BeginForm("", "/Admin/Porcentagem", FormMethod.Post, new { @id = "FormPorcentagem" }))
+{
+        @Html.AntiForgeryToken()
+  <table>
+      
+      <tr>
+          <td colspan="2"><div id="resposta"></div></td>
+      </tr>
+     <tr>
+         <td>@Html.LabelFor(model=>model.Desconto)</td>
+         <td>
+             @Html.TextBoxFor(model=>model.Desconto,new { @class = "txtlogin",@onkeypress="return SomenteNumero(event)" })
+         </td>
+     
+     <tr>
+        <td colspan="2" style="text-align:right">
+            <input type="button" value="Enviar" id="btn_buttonLogar" onclick="CadPorcentagem();" />
+        </td>
+     </tr>
+ </table>   
+}
+<!-- fim do conteudo -->                    
+
+</div>
+</div>               
+<div class="clear"></div>
+</div>

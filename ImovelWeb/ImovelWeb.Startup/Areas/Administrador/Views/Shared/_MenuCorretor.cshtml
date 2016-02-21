@@ -1,0 +1,24 @@
+﻿@using System.Xml;
+
+<div class="sidebarmenu">
+    <a class="menuitem submenuheader" href="#">Menu Corretor</a>
+        @{
+            XmlDocument doc = new XmlDocument();
+            var caminho = System.Configuration.ConfigurationManager.AppSettings["CaminhoXml"]; // dentro do webconfig 
+            doc.Load(caminho);
+            XmlNodeList list = doc.GetElementsByTagName("Menu");
+            }
+             <div class="submenu">
+                <nav>
+                    <ul>
+                        @{  
+                            foreach(XmlNode node in list){
+                                <li><a href="@node["Link"].InnerText">@node["Nome"].InnerText</a></li>
+                        
+                            }
+                        }
+                    </ul>
+                </nav>
+            </div>
+ 
+ </div>

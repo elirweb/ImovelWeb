@@ -1,0 +1,83 @@
+﻿@model DDDImovel.ValuesObject.Model.Corretor
+
+@{
+    ViewData["Estado"] = new SelectList(DDDImovel.Entidade.EstadoBrasileiro.Estado(), "Sigla", "Nome");
+    
+}
+@using (Html.BeginForm("", "/Admin/Index", FormMethod.Post, new { @id = "FormCorretor" }))
+{ 
+        @Html.AntiForgeryToken()
+        <table >
+
+            @Html.HiddenFor(model => model.NivelUsuarioID, new {@Value = Convert.ToInt32(Convert.ToString((int)DDDImovel.Entidade.StatusNivelUsuario.Corretor))}     )
+           
+             <tr>
+                <td colspan="2" class="txttitulo">Dados do Corretor</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="resposta">@ViewBag.msgErro</div>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Matricula)</td>
+                <td>@Html.TextBoxFor(model=>model.Matricula, new { @class = "txtlogin" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.NomeCorretor)</td>
+                <td>@Html.TextBoxFor(model=>model.NomeCorretor,new { @class = "txtlogin" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Login)</td>
+                <td>@Html.TextBoxFor(model=>model.Login,new { @class = "txtlogin",id="logincorretor" } )</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Senha)</td>
+                <td>@Html.PasswordFor(model=>model.Senha,new { @class = "txtlogin",id="senhacorretor" })</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Confirmar")</td>
+                <td>@Html.Password("resenha", "", new {@class = "txtlogin",id="resenha",onkeyup="ValidarSenha(this.value);" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Endereco)</td>
+                <td>@Html.TextBoxFor(model=>model.Endereco,new { @class = "txtlogin" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Email)</td>
+                <td>@Html.TextBoxFor(model=>model.Email,new { @class = "txtlogin",onkeyup="ValidadorEmail(this.value);" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Sexo)</td>
+                <td>
+                    @Html.DropDownList("sexo", (new[] { 
+                        new SelectListItem {Text = "Selecione", Value="0" },
+                        new SelectListItem { Text = "Masculino", Value= Convert.ToString(DDDImovel.ValuesObject.EnumSexo.Masculino) },
+                        new SelectListItem { Text= "Feminino",Value= Convert.ToString(DDDImovel.ValuesObject.EnumSexo.Feminino) }}
+                   ))
+                   
+                </td>
+            </tr>
+             <tr>
+                <td>@Html.LabelFor(model=>model.Estado)</td>
+
+                <td>
+                    @Html.DropDownList("Estado", "Selecione..")
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Cidade)</td>
+                <td>@Html.TextBoxFor(model=>model.Cidade,new { @class = "txtlogin" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Telefone)</td>
+                <td>@Html.TextBoxFor(model=>model.Telefone,new { @class = "txtlogin" })</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:right">
+                    <input type="button" value="Enviar" id="btn_buttonLogar" onclick="SalvarCorretor();" />&nbsp;&nbsp;
+                    <input type="button" value="Fechar" onclick="Closed()" id="btn_buttonLogar" />
+                </td>
+            </tr>
+        </table>
+    }
