@@ -1,11 +1,12 @@
 ﻿
 using ImovelWeb.DDD.Interface;
+using ImovelWeb.DDD.ValueObject.Model;
 using System.Web;
 namespace ImovelWeb.Repository
 {
-    public class RepositorioFoto : RepositoryBase<T>,IFoto
+    public class RepositorioFoto : RepositoryBase<Foto>,IFoto
     {
-        public RepositorioFoto():base (){ }
+        public RepositorioFoto():base (new DDD.ValueObject.Model.ImovelWeb()){ }
 
         public void ArquivarFoto(HttpPostedFileBase arquivo, string imovel)
         {

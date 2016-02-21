@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,13 +66,23 @@
     <Compile Include="Interface\IVendaImovel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueObject\EnumSexo.cs" />
+    <Compile Include="ValueObject\Model\Contato.cs" />
+    <Compile Include="ValueObject\Model\Corretor.cs" />
+    <Compile Include="ValueObject\Model\Empreendimento.cs" />
+    <Compile Include="ValueObject\Model\Foto.cs" />
+    <Compile Include="ValueObject\Model\Imovel.cs" />
+    <Compile Include="ValueObject\Model\ImovelWeb.cs" />
+    <Compile Include="ValueObject\Model\NivelUsuario.cs" />
+    <Compile Include="ValueObject\Model\Porcentagem.cs" />
+    <Compile Include="ValueObject\Model\Registro.cs" />
+    <Compile Include="ValueObject\Model\Usuario.cs" />
+    <Compile Include="ValueObject\Model\VendaImovel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ValueObject\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,5 @@
 ﻿using ImovelWeb.DDD.Interface;
+using ImovelWeb.DDD.ValueObject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ImovelWeb.Repository
 {
-    public class RepositoryCorretor:RepositoryBase<T>,ICorretor
+    public class RepositoryCorretor:RepositoryBase<Corretor>,ICorretor
     {
-        public RepositoryCorretor():base(){ }
+        public RepositoryCorretor() : base(new DDD.ValueObject.Model.ImovelWeb()) { }
         public bool Authenticar(string email, string senha)
         {
             throw new NotImplementedException();

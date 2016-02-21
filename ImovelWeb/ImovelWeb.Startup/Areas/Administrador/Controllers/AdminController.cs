@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImovelWeb.DDD.ValueObject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -43,7 +44,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadcorretor(DDDImovel.ValuesObject.Model.Corretor corretor)
+        public ActionResult Cadcorretor( ImovelWeb.DDD.ValueObject.Model.Corretor corretor)
         {
             var msg = string.Empty;
             var comitar = false;
@@ -203,5 +204,4 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
     }
 }
 
-    }
-}
+    
