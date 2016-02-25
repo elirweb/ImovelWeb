@@ -280,6 +280,14 @@
       <Project>{4be07437-a404-499d-b13c-7813f08a728c}</Project>
       <Name>ImovelWeb.DDD</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ImovelWeb.Repository\ImovelWeb.Repository.csproj">
+      <Project>{2467e3ba-aad1-4b95-9cb4-83de95a79228}</Project>
+      <Name>ImovelWeb.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImovelWeb.WorkFlow\ImovelWeb.WorkFlow.csproj">
+      <Project>{12ea70b6-4e96-40e7-a2d7-889e16d2d3df}</Project>
+      <Name>ImovelWeb.WorkFlow</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

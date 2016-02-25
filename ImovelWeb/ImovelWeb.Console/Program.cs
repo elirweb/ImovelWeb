@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImovelWeb.Repository;
+using System;
 namespace ImodelWeb.Console
 {
     

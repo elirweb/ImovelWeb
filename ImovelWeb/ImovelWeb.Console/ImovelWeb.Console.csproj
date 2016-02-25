@@ -57,6 +57,10 @@
       <Project>{4be07437-a404-499d-b13c-7813f08a728c}</Project>
       <Name>ImovelWeb.DDD</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ImovelWeb.Repository\ImovelWeb.Repository.csproj">
+      <Project>{2467e3ba-aad1-4b95-9cb4-83de95a79228}</Project>
+      <Name>ImovelWeb.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

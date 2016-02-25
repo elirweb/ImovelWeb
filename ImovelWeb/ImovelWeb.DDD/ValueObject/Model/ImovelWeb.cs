@@ -9,7 +9,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
     public partial class ImovelWeb : DbContext
     {
         public ImovelWeb()
-            : base("name=ImovelWeb")
+            : base("name=Contexto")
         {
             Configuration.LazyLoadingEnabled = false;
             

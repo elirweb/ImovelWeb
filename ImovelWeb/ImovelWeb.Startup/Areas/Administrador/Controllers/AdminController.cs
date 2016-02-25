@@ -5,7 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-
+using ImovelWeb.Repository;
+using ImovelWeb.WorkFlow;
 namespace ImovelWeb.Startup.Areas.Administrador.Controllers
 {
     public class AdminController : Controller
@@ -20,7 +21,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(FormCollection model)
         {
-            using (RepositoryImovel.RepositoryCorretor corretor = new RepositoryImovel.RepositoryCorretor()) {
+            using (RepositoryCorretor corretor = new RepositoryCorretor()) {
 
                 if (corretor.Authenticar(model["Login"], model["Senha"]))
                 {
@@ -51,10 +52,10 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
             EmailCorretor sendecorretor = new EmailCorretor();
             if (ModelState.IsValid)
             {
-                using (RepositoryImovel.RepositoryCorretor scorretor = new RepositoryImovel.RepositoryCorretor()) {
+                using (RepositoryCorretor scorretor = new RepositoryCorretor()) {
                     scorretor.Inserir(corretor);
                     //sendecorretor.EnviarEmailCorretor(corretor.Email);
-                    RepositoryImovel.RepositoryRegistro registro = new RepositoryImovel.RepositoryRegistro();
+                    RepositoryRegistro registro = new RepositoryRegistro();
 
                     // inserir novo registro
                     registro.NovoCorretor(corretor);
@@ -84,7 +85,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         public ActionResult Foto() {
             
             
-            RepositoryImovel.RepositoryEmpreendimento emp = new RepositoryImovel.RepositoryEmpreendimento();
+            RepositoryEmpreendimento emp = new RepositoryEmpreendimento();
             ViewData["EmpreendimentoID"] = new SelectList(emp.ObterTodos(), "EmpreendimentoID", "Nome");
          
             return View();
@@ -96,9 +97,9 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Foto(HttpPostedFileBase file,Foto foto)
         {
-            var msg = "";
+           // var msg = "";
             if (ModelState.IsValid) {
-                using (RepositoryImovel.RepositorioFoto fot = new RepositoryImovel.RepositorioFoto()) {
+                using (RepositorioFoto fot = new RepositorioFoto()) {
                     fot.Inserir(foto);
                     fot.Foto(file, foto.NomeFoto);
                     ViewBag.msg = "Dados cadastrados com sucesso";
@@ -106,7 +107,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
                 }
             }
             
-            RepositoryImovel.RepositoryEmpreendimento emp = new RepositoryImovel.RepositoryEmpreendimento();
+            RepositoryEmpreendimento emp = new RepositoryEmpreendimento();
             ViewData["EmpreendimentoID"] = new SelectList(emp.ObterTodos(), "EmpreendimentoID", "Nome");
          
             return View();
@@ -115,10 +116,10 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         
         [Authorize]
         public ActionResult Imovel() {
-            RepositoryImovel.RepositoryEmpreendimento emp = new RepositoryImovel.RepositoryEmpreendimento();
+            RepositoryEmpreendimento emp = new RepositoryEmpreendimento();
             ViewData["EmpreendimentoID"] = new SelectList(emp.ObterTodos(), "EmpreendimentoID", "Nome");
          
-            RepositoryImovel.RepositoryPorcentagem porc = new RepositoryImovel.RepositoryPorcentagem();
+            RepositoryPorcentagem porc = new RepositoryPorcentagem();
             ViewData["PorcentagemID"] = new SelectList(porc.ObterTodos(), "PorcentagemID", "Desconto");
             return View();
         }
@@ -127,8 +128,8 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         public ActionResult Imovel(Imovel imovel) {
             var msg = "";
             if (ModelState.IsValid) {
-                using (RepositoryImovel.RepositoryImobiliario imo = new RepositoryImovel.RepositoryImobiliario()) {
-                    imo.Inserir(imovel);
+                using (RepositoryImobiliario imo = new RepositoryImobiliario()) {
+                    //imo.Inserir(imovel);
                     msg = "Cadastrado com sucesso";
                 }
             }
@@ -141,7 +142,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [Authorize]
         public ActionResult Empreendimento() {
 
-            RepositoryImovel.RepositoryCorretor corretor = new RepositoryImovel.RepositoryCorretor();
+            RepositoryCorretor corretor = new RepositoryCorretor();
             var  idcorretor =  corretor.Localizar(c => c.Email.Equals(User.Identity.Name));
             foreach(var item in idcorretor){
                 ViewBag.IDCorretor = item.CorretorID;
@@ -157,7 +158,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
             var msg = "";
             if (ModelState.IsValid) {
 
-                using (RepositoryImovel.RepositoryEmpreendimento empreendimento = new RepositoryImovel.RepositoryEmpreendimento()) {
+                using (RepositoryEmpreendimento empreendimento = new RepositoryEmpreendimento()) {
                     empreendimento.Inserir(model);
                     msg = "Cadastrado com sucesso";
                 }
@@ -179,7 +180,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         {
             var msg = "";
             if (ModelState.IsValid) {
-                using (RepositoryImovel.RepositoryPorcentagem porc = new RepositoryImovel.RepositoryPorcentagem())
+                using (RepositoryPorcentagem porc = new RepositoryPorcentagem())
                 {
                     var proc = porc.Localizar(x => x.Desconto.Equals(porcentagem));
                     if (proc != null)

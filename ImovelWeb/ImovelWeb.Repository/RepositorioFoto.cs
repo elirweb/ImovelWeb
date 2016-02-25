@@ -31,5 +31,10 @@ namespace ImovelWeb.Repository
 
             }
         }
+
+        public void Foto(HttpPostedFileBase file, string p)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
