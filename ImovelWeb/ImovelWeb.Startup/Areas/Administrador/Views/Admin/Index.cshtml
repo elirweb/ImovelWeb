@@ -1,20 +1,20 @@
 ﻿@{
     ViewBag.Title = "Painel do Corretor";
-    Layout = "~/Areas/Administrator/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Areas/Administrador/Views/Shared/_LayoutAdmin.cshtml";
     
     }
 @model ImovelWeb.DDD.ValueObject.Model.Usuario
 <div id="MsgGeral" style="display:none"></div>
 <div id="CadCorretor" style="display:none">
-    @Html.Partial("~/Areas/Administrator/Views/Shared/_CadastroCorretor.cshtml")
+    @Html.Partial("~/Areas/Administrador/Views/Shared/_CadastroCorretor.cshtml")
 </div>
 <div id="EmailCadastro" style="display:none;">
-    @Html.Partial("~/Areas/Administrator/Views/Shared/_EmailCadastro.cshtml")
+    @Html.Partial("~/Areas/Administrador/Views/Shared/_EmailCadastro.cshtml")
 </div>
 <div id="main_container">
 	<div class="header_login">
         <div class="logo"><a href="#">
-            <img src="@Url.Content("~/Areas/Administrator/Content/images/logo.gif")" alt="" title="" border="0" /></a></div>
+            <img src="@Url.Content("~/Areas/Administrador/Content/images/logo.gif")" alt="" title="" border="0" /></a></div>
         </div>
         <div class="login_form">
             <h3>Se identifique por favor para utilizar o Imovel</h3>
