@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ImovelWeb.WorkFlow
 {
-    public sealed class EmailCorretor
+    public  class EmailCorretor
     {
         public bool envio = false;
         public StringBuilder mainhead = new StringBuilder();

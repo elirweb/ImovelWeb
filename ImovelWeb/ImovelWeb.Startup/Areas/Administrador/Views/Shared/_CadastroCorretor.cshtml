@@ -1,7 +1,7 @@
-﻿@model DDDImovel.ValuesObject.Model.Corretor
+﻿@model ImovelWeb.DDD.ValueObject.Model.Corretor
 
 @{
-    ViewData["Estado"] = new SelectList(DDDImovel.Entidade.EstadoBrasileiro.Estado(), "Sigla", "Nome");
+    ViewData["Estado"] = new SelectList(ImovelWeb.DDD.Entidade.EstadoBrasileiro.Estado(), "Sigla", "Nome");
     
 }
 @using (Html.BeginForm("", "/Admin/Index", FormMethod.Post, new { @id = "FormCorretor" }))
@@ -9,7 +9,7 @@
         @Html.AntiForgeryToken()
         <table >
 
-            @Html.HiddenFor(model => model.NivelUsuarioID, new {@Value = Convert.ToInt32(Convert.ToString((int)DDDImovel.Entidade.StatusNivelUsuario.Corretor))}     )
+            @Html.HiddenFor(model => model.NivelUsuarioID, new { @Value = Convert.ToInt32(Convert.ToString((int)ImovelWeb.DDD.Entidade.StatusNivelUsuario.Corretor)) })
            
              <tr>
                 <td colspan="2" class="txttitulo">Dados do Corretor</td>

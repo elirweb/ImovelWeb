@@ -1,13 +1,13 @@
 ﻿@{
     ViewBag.Title = "Imovel";
     Layout = "~/Areas/Administrator/Views/Shared/_LayoutAdmin.cshtml";
-    
-    ViewData["Estado"] = new SelectList(DDDImovel.Entidade.EstadoBrasileiro.Estado(), "Sigla", "Nome");
+
+    ViewData["Estado"] = new SelectList(ImovelWeb.DDD.Entidade.EstadoBrasileiro.Estado(), "Sigla", "Nome");
     
         
 }
 
-@model DDDImovel.ValuesObject.Model.Imovel
+@model ImovelWeb.DDD.ValueObject.Model.Imovel
 
 
 <div id="main_container">

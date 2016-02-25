@@ -1,40 +1,33 @@
 ﻿
+using ImovelWeb.DDD.Test.Interface;
 using ImovelWeb.DDD.Test.ValueObject.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 namespace ImovelWeb.Repository.Test
 {
     
     [TestClass]
     public class CorretorTest
     {
-        private ICorretorRepositoryTest MoqCorretor { get; set; } 
-        
-        public CorretorTest()
-        {
-            List<Corretor> corretor = 
-                new List<Corretor> {
-                new Corretor { CorretorID = 1, Matricula = "123456", Email = "elirweb@gmail.com", Cidade = "São Paulo",
-                Estado = "SP", Endereco = "Silveira Pires", NomeCorretor = "Emanuel", NivelUsuarioID = 2, Login  = "elirweb", Senha = "123456", Sexo = "M", 
-                Telefone = "123456"  }
+
+        [TestMethod()]
+        public void Criar_Corretor_Salvar_Context() {
+            var mokSet = new Mock<ImovelWeb.WorkFlow.EmailCorretor>();
+
+            
+            var servico = new RepositoryCorretor();
+
+            var co = new Corretor() { 
+                Login = "elir", NomeCorretor = "Elir de Assis Ribeiro", Matricula = "1245", Senha = "123456", Sexo = "M", Telefone = "123456",
+                Cidade = "São Paulo", Email = "elirweb@gmail.com", Estado = "SP", CorretorID = 43, Endereco = "Silveira pires", 
+                NivelUsuarioID = 1
             };
 
-
-            // retornando lista de corretor cadastrado no banco de dados
-            var mockcorretor = new Mock<ICorretorRepositoryTest>();
-            mockcorretor.Setup(c=>c.Corretor).Returns(corretor);
-
+            mokSet.Setup(x => x.EnviarEmailCorretor(co.Email)).Returns(true);
         }
-
-        [TestMethod]
-        public void Verificar_Campo_Email_Em_Branco() {
-           IList<Corretor> campos = this.MoqCorretor.Corretor;
-            
-             //Assert.IsNotNull(campos.); // testando se tá nulo
-            Assert.AreEqual(0, campos.Count); // comprando o n. de itens
-        }
-
         
     }
 }

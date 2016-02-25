@@ -2,10 +2,10 @@
     ViewBag.Title = "Empreendimento";
     Layout = "~/Areas/Administrator/Views/Shared/_LayoutAdmin.cshtml";
 
-    ViewData["Estado"] = new SelectList(DDDImovel.Entidade.EstadoBrasileiro.Estado(), "Sigla", "Nome");
+    ViewData["Estado"] = new SelectList(ImovelWeb.DDD.Entidade.EstadoBrasileiro.Estado(), "Sigla", "Nome");
   
 }
-@model DDDImovel.ValuesObject.Model.Empreendimento
+@model ImovelWeb.DDD.ValueObject.Model.Empreendimento
 <div id="main_container">
     <div class="header">
         <div class="logo">
