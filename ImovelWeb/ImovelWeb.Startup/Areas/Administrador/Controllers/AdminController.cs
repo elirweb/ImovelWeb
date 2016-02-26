@@ -194,6 +194,8 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
             return Json(msg,JsonRequestBehavior.AllowGet);
         }
 
+        
+
         public ActionResult EsqueceuEmail(string email,string senha) {
             EmailCorretorEsqueceuSenha sendecorretor = new EmailCorretorEsqueceuSenha();
             sendecorretor.EnviarEmailCorretor(email,senha);        

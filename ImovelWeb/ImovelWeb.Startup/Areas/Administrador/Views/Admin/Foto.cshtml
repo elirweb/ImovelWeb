@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Foto";
-    Layout = "~/Areas/Administrator/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Areas/Administrador/Views/Shared/_LayoutAdmin.cshtml";
   
 }
 @model ImovelWeb.DDD.ValueObject.Model.Foto
@@ -9,7 +9,7 @@
     <div class="header">
         <div class="logo">
             <a href="#">
-                <img src="@Url.Content("~/Areas/Administrator/Content/images/logo.gif")" alt="" title="" border="0" /></a>
+                <img src="@Url.Content("~/Areas/Administrador/Content/images/logo.gif")" alt="" title="" border="0" /></a>
         </div>
     </div>
     <div class="main_content">
@@ -22,11 +22,11 @@
         <div class="sidebar_search">
             <form>
                 <input type="text" name="" class="search_input" value="" placeholder="Empreendimento" />
-                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Administrator/Content/images/search.png")" />
+                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Administrador/Content/images/search.png")" />
             </form>            
     </div>
     
- @Html.Partial("~/Areas/Administrator/Views/Shared/_MenuCorretor.cshtml") 
+ @Html.Partial("~/Areas/Administrador/Views/Shared/_MenuCorretor.cshtml") 
               
     
 </div>  
