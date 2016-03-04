@@ -63,7 +63,6 @@
     <Compile Include="Interface\IPorcentagem.cs" />
     <Compile Include="Interface\IRegistro.cs" />
     <Compile Include="Interface\IRepositoryBase.cs" />
-    <Compile Include="Interface\IUnitOfWork.cs" />
     <Compile Include="Interface\IUsuario.cs" />
     <Compile Include="Interface\IVendaImovel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace ImovelWeb.Repository
 {
-    public class RepositoryImobiliario:RepositoryBase<NivelUsuario>,ImovelInterface
+    public class RepositoryImobiliario:RepositoryBase<Imovel>,ImovelInterface
     {
         public RepositoryImobiliario() : base(new DDD.ValueObject.Model.ImovelWeb()) { }
+
     }
 }

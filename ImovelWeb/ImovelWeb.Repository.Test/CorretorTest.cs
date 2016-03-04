@@ -13,21 +13,33 @@ namespace ImovelWeb.Repository.Test
     public class CorretorTest
     {
 
-        [TestMethod()]
-        public void Criar_Corretor_Salvar_Context() {
-            var mokSet = new Mock<ImovelWeb.WorkFlow.EmailCorretor>();
+        Corretor corretor;
 
-            
-            var servico = new RepositoryCorretor();
+        public CorretorTest()
+        {
+            corretor = new Corretor()
+            {
 
-            var co = new Corretor() { 
-                Login = "elir", NomeCorretor = "Elir de Assis Ribeiro", Matricula = "1245", Senha = "123456", Sexo = "M", Telefone = "123456",
-                Cidade = "São Paulo", Email = "elirweb@gmail.com", Estado = "SP", CorretorID = 43, Endereco = "Silveira pires", 
+                Login = "elir",
+                NomeCorretor = "Elir de Assis Ribeiro",
+                Matricula = "1245",
+                Senha = "123456",
+                Sexo = "M",
+                Telefone = "123456",
+                Cidade = "São Paulo",
+                Email = "elirweb@gmail.com",
+                Estado = "SP",
+                CorretorID = 43,
+                Endereco = "Silveira pires",
                 NivelUsuarioID = 1
             };
-
-            mokSet.Setup(x => x.EnviarEmailCorretor(co.Email)).Returns(true);
         }
+
+        [TestMethod]
+        [TestCategory("Inicializacao de categoria")]
+        public void Verficar_Nome_Em_Branco() {
+            Assert.IsNull(corretor.Email,"");
+        } 
         
     }
 }

@@ -228,8 +228,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administrador\Views\web.config" />
     <Content Include="Areas\Administrador\Views\Admin\Empreendimento.cshtml" />
     <Content Include="Areas\Administrador\Views\Admin\Foto.cshtml" />
@@ -237,17 +235,6 @@
     <Content Include="Areas\Administrador\Views\Admin\Imovel.cshtml" />
     <Content Include="Areas\Administrador\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Administrador\Views\Admin\Porcentagem.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -262,7 +249,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Areas\Administrador\Views\Shared\_CadastroCorretor.cshtml" />
     <Content Include="Areas\Administrador\Views\Shared\_EmailCadastro.cshtml" />
     <Content Include="Areas\Administrador\Views\Shared\_LayoutAdmin.cshtml" />
@@ -286,6 +272,10 @@
     <ProjectReference Include="..\ImovelWeb.Repository\ImovelWeb.Repository.csproj">
       <Project>{2467e3ba-aad1-4b95-9cb4-83de95a79228}</Project>
       <Name>ImovelWeb.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImovelWeb.WebUtil\ImovelWeb.WebUtil.csproj">
+      <Project>{4d158ec1-4af9-4adb-9b0d-4250a1f8e986}</Project>
+      <Name>ImovelWeb.WebUtil</Name>
     </ProjectReference>
     <ProjectReference Include="..\ImovelWeb.WorkFlow\ImovelWeb.WorkFlow.csproj">
       <Project>{12ea70b6-4e96-40e7-a2d7-889e16d2d3df}</Project>

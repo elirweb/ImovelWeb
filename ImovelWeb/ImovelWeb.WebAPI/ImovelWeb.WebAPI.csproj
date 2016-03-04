@@ -172,12 +172,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CorretorController.cs" />
     <Compile Include="Controllers\EmpreendimentoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImovelControllers.cs" />
     <Compile Include="Controllers\NivelUsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -213,6 +213,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImovelWeb.DDD\ImovelWeb.DDD.csproj">
+      <Project>{4be07437-a404-499d-b13c-7813f08a728c}</Project>
+      <Name>ImovelWeb.DDD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImovelWeb.Repository\ImovelWeb.Repository.csproj">
+      <Project>{2467e3ba-aad1-4b95-9cb4-83de95a79228}</Project>
+      <Name>ImovelWeb.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

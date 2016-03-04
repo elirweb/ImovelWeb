@@ -47,6 +47,12 @@
   <ItemGroup>
     <None Include="App.Config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImovelWeb.WebUtil\ImovelWeb.WebUtil.csproj">
+      <Project>{4d158ec1-4af9-4adb-9b0d-4250a1f8e986}</Project>
+      <Name>ImovelWeb.WebUtil</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

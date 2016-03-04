@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImovelWeb.WebUtil;
+using System;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
@@ -55,11 +56,11 @@ namespace ImovelWeb.WorkFlow
                 catch (ArgumentException h)
                 {
 
-                    throw new Exception("Erro no Envio de Email" + h.Message);
+                    throw new Exception(MensagemSistema.MSG_ERRO_ENVIO_EMAIL + h.Message);
                 }
                 catch (Exception y)
                 {
-                    throw new Exception("Erro no Sistema favor entrar em contato com o Adm" + y.Message);
+                    throw new Exception(MensagemSistema.MSG_ERRO_PROXI_EMAIL + y.Message);
                 }
 
                 envio = true;

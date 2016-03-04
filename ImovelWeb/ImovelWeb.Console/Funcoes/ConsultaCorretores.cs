@@ -14,7 +14,7 @@ namespace ImovelWeb.Console.Funcoes
                 BaseAddress = new Uri(endereco)
             };
 
-            HttpResponseMessage message = await cliente.GetAsync("corretor");
+            HttpResponseMessage message = await cliente.GetAsync("Corretor");
             var res = message.Content.ReadAsStringAsync();
             JArray dados = JArray.Parse(res.Result);
             string propriedades = string.Empty;

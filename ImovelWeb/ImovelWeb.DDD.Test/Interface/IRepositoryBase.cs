@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ImovelWeb.DDD.Interface
+namespace ImovelWeb.DDD.Test.Interface
 {
     public interface IRepositoryBase<T> where T : class
     {
@@ -13,6 +13,6 @@ namespace ImovelWeb.DDD.Interface
         T PegarID(int id);
         IEnumerable<T> ObterTodos();
         IQueryable<T> Localizar(Func<T, bool> predicate);
-        void Salvar();
+     
     }
 }

@@ -1,16 +1,16 @@
 ﻿using ImovelWeb.Repository;
 using System;
-namespace ImodelWeb.Console
+namespace ImovelWeb.Console
 {
     
     public class Program
     {
         static void Main(string[] args)
         {
-             string sair = string.Empty;
-             string escolha = string.Empty;
-             string nivelusuario = string.Empty;
-             string dados = string.Empty;
+             String sair = string.Empty;
+             String escolha = string.Empty;
+             String nivelusuario = string.Empty;
+             String dados = string.Empty;
              System.Console.WriteLine("Tela do Adminsitrador do Sistema\n");
              
             do{

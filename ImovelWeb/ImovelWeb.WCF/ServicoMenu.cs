@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImovelWeb.WebUtil;
+using System;
 using System.Data;
 using System.IO;
 using System.Xml;
@@ -29,7 +30,7 @@ namespace ImovelWeb.WCF
                     }
                     else
                     {
-                        item.Nome = "Não Cadastrado";
+                        item.Nome = MensagemSistema.MSG_MENU_NAO_CADASTRADO;
 
 
                     }
@@ -106,9 +107,9 @@ namespace ImovelWeb.WCF
                 }
             }
             if (resultado)
-                return "Removido com sucesso";
+                return MensagemSistema.MSG_MENU_REMOVIDO;
             else
-                return "Menu não cadastrado";
+                return MensagemSistema.MSG_MENU_NAO_CADASTRADO;
 
         }
     }

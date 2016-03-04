@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ImovelWeb.DDD.ValueObject.Model;
+using ImovelWeb.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,18 +12,21 @@ namespace ImovelWeb.WebAPI.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "GET")] // definindo o cabecalho de origens para receber metodo get 
    
+   
     public class CorretorController : ApiController
     {
+        private readonly RepositoryCorretor corretor = new RepositoryCorretor();
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public IEnumerable<Corretor> Get()
         {
-            return new string[] { "value1", "value2" };
+            return corretor.ObterTodos();
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // GET <!--http://localhost:51744/api/corretor/?valor=elir45@bol.com.br parametro -->
+        public IQueryable<Corretor> Get(string valor)
         {
-            return "value";
+            var emailcorretor = corretor.Localizar(x => x.Email.Equals(valor.Trim()));
+            return emailcorretor;
         }
 
         // POST api/<controller>
@@ -38,5 +43,7 @@ namespace ImovelWeb.WebAPI.Controllers
         public void Delete(int id)
         {
         }
+
+
     }
 }

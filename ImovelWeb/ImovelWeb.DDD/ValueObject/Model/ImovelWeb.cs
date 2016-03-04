@@ -1,10 +1,7 @@
 ﻿namespace ImovelWeb.DDD.ValueObject.Model
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-using System.Data.Entity.ModelConfiguration.Conventions;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     public partial class ImovelWeb : DbContext
     {
@@ -12,6 +9,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
             : base("name=Contexto")
         {
             Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
             
         }
 

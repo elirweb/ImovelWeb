@@ -4,34 +4,40 @@ using System.Web.Mvc;
 using System.Web.Security;
 using ImovelWeb.Repository;
 using ImovelWeb.WorkFlow;
+using ImovelWeb.WebUtil;
 namespace ImovelWeb.Startup.Areas.Administrador.Controllers
 {
+   
     public class AdminController : Controller
     {
         // GET: Administrador/Admin
-       public ActionResult Index()
+        public ActionResult Index()
         {
+            
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(FormCollection model)
+        public ActionResult Index(DDD.ValueObject.Model.Usuario model)
         {
-            using (RepositoryCorretor corretor = new RepositoryCorretor()) {
 
-                if (corretor.Authenticar(model["Login"], model["Senha"]))
+            using (RepositoryCorretor corretor = new RepositoryCorretor())
+            {
+                
+                if (corretor.Authenticar(model.Login, model.Senha))
                 {
-                    FormsAuthentication.SetAuthCookie(model["Login"], false);
+                    FormsAuthentication.SetAuthCookie(model.Login, false);
                     return RedirectToAction("/Home");
                 }
                 else
                 {
-                    ViewBag.mensagem = "Usuario ou Senha não confere";
+                    ViewBag.mensagem = MensagemSistema.MSG_ERRO_SENHA_USUARIO;
                     return View();
                 }
             }
-            
+
+
             
         }
 
@@ -49,24 +55,26 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
             EmailCorretor sendecorretor = new EmailCorretor();
             if (ModelState.IsValid)
             {
-                using (RepositoryCorretor scorretor = new RepositoryCorretor()) {
+
+                using (RepositoryCorretor scorretor = new RepositoryCorretor())
+                {
                     scorretor.Inserir(corretor);
-                    //sendecorretor.EnviarEmailCorretor(corretor.Email);
+                    sendecorretor.EnviarEmailCorretor(corretor.Email);
                     RepositoryRegistro registro = new RepositoryRegistro();
 
                     // inserir novo registro
                     registro.NovoCorretor(corretor);
-                    
-            };
+
+                };    
             
             comitar = true;
 
         }
 
-        if (comitar)
-            msg = "Cadastro efetuado com sucesso";
-        else
-            msg = "Erro! no cadastro";
+            if (comitar)
+                msg = MensagemSistema.MSG_SUCESSO;
+            else
+                msg = MensagemSistema.MSG_ERRO;
     
             return Json(msg, JsonRequestBehavior.AllowGet);
 
@@ -94,12 +102,11 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Foto(HttpPostedFileBase file,Foto foto)
         {
-           // var msg = "";
             if (ModelState.IsValid) {
                 using (RepositorioFoto fot = new RepositorioFoto()) {
                     fot.Inserir(foto);
                     fot.Foto(file, foto.NomeFoto);
-                    ViewBag.msg = "Dados cadastrados com sucesso";
+                    ViewBag.msg = MensagemSistema.MSG_SUCESSO;
                     
                 }
             }
@@ -127,7 +134,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
             if (ModelState.IsValid) {
                 using (RepositoryImobiliario imo = new RepositoryImobiliario()) {
                     //imo.Inserir(imovel);
-                    msg = "Cadastrado com sucesso";
+                    msg = MensagemSistema.MSG_SUCESSO;
                 }
             }
 
@@ -157,7 +164,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
 
                 using (RepositoryEmpreendimento empreendimento = new RepositoryEmpreendimento()) {
                     empreendimento.Inserir(model);
-                    msg = "Cadastrado com sucesso";
+                    msg = MensagemSistema.MSG_SUCESSO;
                 }
             }
 
@@ -182,12 +189,12 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
                     var proc = porc.Localizar(x => x.Desconto.Equals(porcentagem));
                     if (proc != null)
                     {
-                        msg = "Desconto cadastrado no sistema";
+                        msg = MensagemSistema.MSG_DESCONTO_CADASTRADO;
                     }
                     else
                     {
                         porc.Inserir(porcentagem);
-                        msg = "Porcentagem inserido com sucesso";
+                        msg = MensagemSistema.MSG_SUCESSO;
                     }
                 }
             }
