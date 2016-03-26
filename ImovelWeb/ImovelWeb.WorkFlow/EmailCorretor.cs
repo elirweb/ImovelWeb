@@ -20,12 +20,12 @@ namespace ImovelWeb.WorkFlow
             {
                 SmtpClient cliente = new SmtpClient("smtp.gmail.com", 587);
                 MailAddress remetente = new MailAddress("elirweb@gmail.com", "Portal Imovel Web");
-                MailAddress destinatario = new MailAddress("elir.ribeiro@avantled.com.br", "Portal Imovel Web"); // colocar o email do cliente
+                MailAddress destinatario = new MailAddress(_email, "Portal Imovel Web"); // colocar o email do cliente
                 MailMessage message = new MailMessage(remetente, destinatario);
 
                 message.Priority = MailPriority.Normal;
                 message.IsBodyHtml = true;
-                message.To.Add(new MailAddress(_email, "Portal Imovel Web"));
+               // message.To.Add(new MailAddress("elir45@bol.com.br", "Portal Imovel Web"));
                 message.From = new MailAddress("elir45@bol.com.br", "Portal Imovel Web");
                 message.Subject = "Portal Imovel Web";
                 mainhead.Append("<html>");

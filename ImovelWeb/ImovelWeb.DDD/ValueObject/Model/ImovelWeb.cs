@@ -10,6 +10,7 @@
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
+
             
         }
 

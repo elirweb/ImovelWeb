@@ -66,9 +66,9 @@
     <Compile Include="MapFluent\RegistroMap.cs" />
     <Compile Include="MapFluent\UsuarioMap.cs" />
     <Compile Include="MapFluent\VendaImovelMap.cs" />
-    <Compile Include="Migrations\201602211207235_ImovelWebDB.cs" />
-    <Compile Include="Migrations\201602211207235_ImovelWebDB.Designer.cs">
-      <DependentUpon>201602211207235_ImovelWebDB.cs</DependentUpon>
+    <Compile Include="Migrations\201603250309371_Imovelweb.cs" />
+    <Compile Include="Migrations\201603250309371_Imovelweb.Designer.cs">
+      <DependentUpon>201603250309371_Imovelweb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NivelUsuario.cs" />
@@ -80,13 +80,13 @@
     <Compile Include="VendaImovel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602211207235_ImovelWebDB.resx">
-      <DependentUpon>201602211207235_ImovelWebDB.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603250309371_Imovelweb.resx">
+      <DependentUpon>201603250309371_Imovelweb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

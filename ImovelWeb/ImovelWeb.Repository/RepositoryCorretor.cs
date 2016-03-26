@@ -10,13 +10,16 @@ namespace ImovelWeb.Repository
 {
     public class RepositoryCorretor:RepositoryBase<Corretor>,ICorretor
     {
-        public RepositoryCorretor() : base(new DDD.ValueObject.Model.ImovelWeb()) { }
+        private readonly DDD.ValueObject.Model.ImovelWeb _db;
+        public RepositoryCorretor(DDD.ValueObject.Model.ImovelWeb db_ ) : base(new DDD.ValueObject.Model.ImovelWeb()) {
+
+            _db = db_;
+        }
         public bool Authenticar(string email, string senha)
         {
-            DDD.ValueObject.Model.ImovelWeb db = new DDD.ValueObject.Model.ImovelWeb();
             var user = false;
 
-            var elemento = (from p in db.Corretors
+            var elemento = (from p in _db.Corretors
                             where p.Email.Equals(email) &&
                                 p.Senha.Equals(senha)
                             select p).FirstOrDefault();

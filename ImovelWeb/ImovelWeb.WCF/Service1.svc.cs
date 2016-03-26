@@ -1,14 +1,23 @@
-﻿using ImovelWeb.WebUtil;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
 using System.Xml;
 
 namespace ImovelWeb.WCF
 {
-    public class ServicoMenu:IMenu
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
+    public class Service1 : IMenu
     {
-        private String _nomearquivo = string.Empty;
+        private string _nomearquivo = string.Empty;
+
 
         public XmlMenu PesquisarMenu(string menu)
         {
@@ -30,7 +39,7 @@ namespace ImovelWeb.WCF
                     }
                     else
                     {
-                        item.Nome = MensagemSistema.MSG_MENU_NAO_CADASTRADO;
+                        item.Nome = "Não Cadastrado";
 
 
                     }
@@ -58,7 +67,8 @@ namespace ImovelWeb.WCF
 
             if (Directory.Exists(diretorio))
             {
-                ds.ReadXml(System.Configuration.ConfigurationManager.AppSettings["CaminhoXMLArquivoFinal"]);
+                
+                ds.ReadXml(ConfigurationManager.AppSettings["CaminhoXMLArquivoFinal"]);
                 rw["Id"] = Guid.NewGuid();
                 rw["Nome"] = menu.Nome;
                 rw["Link"] = menu.Linq;
@@ -67,8 +77,9 @@ namespace ImovelWeb.WCF
             }
             else
             {
+                
                 Directory.CreateDirectory(diretorio);
-
+                
                 rw["Id"] = Guid.NewGuid();
                 rw["Nome"] = menu.Nome;
                 rw["Link"] = menu.Linq;
@@ -76,10 +87,11 @@ namespace ImovelWeb.WCF
                 dt.Rows.Add(rw);
             }
             ds.WriteXml(diretorio + _nomearquivo);
-
+            
         }
 
-        public string RemoverMenu(string menu)
+
+        public String RemoverMenu(string menu)
         {
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
@@ -107,9 +119,9 @@ namespace ImovelWeb.WCF
                 }
             }
             if (resultado)
-                return MensagemSistema.MSG_MENU_REMOVIDO;
+                return "Removido com sucesso";
             else
-                return MensagemSistema.MSG_MENU_NAO_CADASTRADO;
+                return "Menu não cadastrado";
 
         }
     }

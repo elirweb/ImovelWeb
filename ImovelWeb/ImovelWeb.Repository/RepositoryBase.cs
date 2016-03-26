@@ -3,6 +3,7 @@ using ImovelWeb.DDD.Interface;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 namespace ImovelWeb.Repository
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T>,IDisposable where T : class  
@@ -58,7 +59,24 @@ namespace ImovelWeb.Repository
 
         public void Salvar()
         {
-            _db.SaveChanges();
+
+           // _db.SaveChanges();
+
+            try
+            {
+                _db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        throw new Exception("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
+
             Dispose();
         }
 

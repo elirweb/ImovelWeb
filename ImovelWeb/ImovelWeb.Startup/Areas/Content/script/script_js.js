@@ -102,7 +102,7 @@ function SomenteNumero(e) {
 var SalvarCorretor = function () {
     var dados = $("#FormCorretor").serialize();
     $.ajax({
-        url: 'Admin/Cadcorretor',
+        url: '/Admin/Cadcorretor',
         type: 'post',
         datatype: 'json',
         cache: false,

@@ -10,7 +10,6 @@ namespace ImovelWeb.Model.MapFluent
             HasKey(c => c.FotoID);
             Property(c => c.NomeFoto).HasColumnType("varchar").HasMaxLength(100);
 
-
         }
     }
 }

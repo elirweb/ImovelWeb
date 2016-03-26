@@ -6,31 +6,43 @@ namespace ImovelWeb.Console.Funcoes
 {
     public class ConsultaCorretores
     {
-        public async static void ListCorretorAsync(string endereco)
+        public  static void ListCorretorAsync(string endereco)
         {
 
-            var cliente = new HttpClient()
-            {
-                BaseAddress = new Uri(endereco)
-            };
+            HttpClient client = null;
+            Uri usuarioUri;
 
-            HttpResponseMessage message = await cliente.GetAsync("Corretor");
-            var res = message.Content.ReadAsStringAsync();
-            JArray dados = JArray.Parse(res.Result);
-            string propriedades = string.Empty;
-            foreach (JObject obj in dados.Children<JObject>())
+
+            if (client == null)
             {
-                foreach (JProperty prop in obj.Properties())
-                {
-                    if (prop.HasValues)
-                        if (!prop.Value.ToString().Contains("[]"))
-                        {
-                            propriedades += prop.Name.ToString() + " : " + prop.Value.ToString() + "\n\n";
-                        }
-                }
+                client = new HttpClient();
+                client.BaseAddress = new Uri(endereco);
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             }
 
-            System.Console.WriteLine(propriedades);
+            //chamando a api pela url (método que deve ser requisitado para retorno desejado)
+            HttpResponseMessage response = client.GetAsync("corretor/todos").Result;
+
+            //se retornar com sucesso busca os dados
+            if (response.IsSuccessStatusCode)
+            {
+                //pegando o cabeçalho
+                usuarioUri = response.Headers.Location;
+
+                //Pegando os dados do Rest e armazenando na variável usuários
+                string Retorno = response.Content.ReadAsStringAsync().Result;
+
+                //preenchendo a lista com os dados retornados da variável
+                System.Console.WriteLine(Retorno);
+                System.Console.ReadLine();
+            }
+
+            //Se der erro na chamada, mostra o status do código de erro.
+            else
+                System.Console.Write(response.StatusCode.ToString() + " - " + response.ReasonPhrase);
+                System.Console.ReadLine();
+        
+
         }
     }
 }

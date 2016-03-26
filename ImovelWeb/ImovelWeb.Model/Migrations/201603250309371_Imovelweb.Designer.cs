@@ -7,13 +7,13 @@ namespace ImovelWeb.Model.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
-    public sealed partial class ImovelWebDB : IMigrationMetadata
+    public sealed partial class Imovelweb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ImovelWebDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Imovelweb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602211207235_ImovelWebDB"; }
+            get { return "201603250309371_Imovelweb"; }
         }
         
         string IMigrationMetadata.Source

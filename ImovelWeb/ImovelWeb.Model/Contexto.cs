@@ -17,7 +17,7 @@ namespace ImovelWeb.Model
         DbSet<Porcentagem> Porcentagem { get;set; }
         DbSet<VendaImovel> VendaImovel { get; set; }
 
-
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ImovelWeb.Facade")]
+[assembly: AssemblyTitle("ImovelWeb.SelfHost")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ImovelWeb.Facade")]
+[assembly: AssemblyProduct("ImovelWeb.SelfHost")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("acbba45b-deb5-4232-900b-0fe8a72be452")]
+[assembly: Guid("5d76cc05-e977-4475-b822-a5770b3860a7")]
 
 // Version information for an assembly consists of the following four values:
 //

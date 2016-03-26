@@ -3,7 +3,7 @@ namespace ImovelWeb.Model.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ImovelWebDB : DbMigration
+    public partial class Imovelweb : DbMigration
     {
         public override void Up()
         {
@@ -28,7 +28,7 @@ namespace ImovelWeb.Model.Migrations
                         Matricula = c.String(maxLength: 20, unicode: false),
                         NomeCorretor = c.String(maxLength: 100, unicode: false),
                         Login = c.String(maxLength: 20, unicode: false),
-                        Senha = c.String(maxLength: 20, unicode: false),
+                        Senha = c.String(maxLength: 200, unicode: false),
                         Email = c.String(nullable: false, maxLength: 50, unicode: false),
                         Sexo = c.String(maxLength: 10, unicode: false),
                         Cidade = c.String(maxLength: 20, unicode: false),

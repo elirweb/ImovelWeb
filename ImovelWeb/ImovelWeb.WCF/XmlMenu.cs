@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Web;
 
 namespace ImovelWeb.WCF
 {
@@ -7,12 +10,13 @@ namespace ImovelWeb.WCF
     public class XmlMenu
     {
         [Obsolete]
-        public Int32 Idmenu;
+        public int ID;
 
         [DataMember(Order = 2)]
-        public String Nome;
+        public string Nome;
 
         [DataMember(Order = 3)]
-        public String Linq;
+        public string Linq;
+
     }
 }

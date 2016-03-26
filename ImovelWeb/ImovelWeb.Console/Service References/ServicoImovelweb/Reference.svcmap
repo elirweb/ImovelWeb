@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1865cf08-47b7-4ae6-b0d6-0d0537e3a7a8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:12345/ImovelWeb/Servico" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Servico.xsd" MetadataType="Schema" ID="b2be7423-78c3-40b8-a582-fa6fb5809f18" SourceId="1" SourceUrl="http://localhost:12345/ImovelWeb/Servico?xsd=xsd2" />
+    <MetadataFile FileName="Servico1.xsd" MetadataType="Schema" ID="827398a2-2d70-4880-82d9-bc9b4445e7ef" SourceId="1" SourceUrl="http://localhost:12345/ImovelWeb/Servico?xsd=xsd1" />
+    <MetadataFile FileName="Servico.disco" MetadataType="Disco" ID="46d88670-48d5-4f43-8725-bcf67583028c" SourceId="1" SourceUrl="http://localhost:12345/ImovelWeb/Servico?disco" />
+    <MetadataFile FileName="Servico2.xsd" MetadataType="Schema" ID="909c7240-c702-4242-861b-9632700f7c55" SourceId="1" SourceUrl="http://localhost:12345/ImovelWeb/Servico?xsd=xsd0" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="3accdbb9-e940-40f0-8016-524cd671a074" SourceId="1" SourceUrl="http://localhost:12345/ImovelWeb/Servico?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,11 +1,15 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace ImovelWeb.WCF
 {
     [ServiceContract]
-    interface IMenu
+    public interface IMenu
     {
-
         [OperationContract]
         XmlMenu PesquisarMenu(string menu);
 
@@ -14,5 +18,6 @@ namespace ImovelWeb.WCF
 
         [OperationContract]
         string RemoverMenu(string menu);
+
     }
 }

@@ -1,12 +1,11 @@
 ﻿using ImovelWeb.DDD.ValueObject.Model;
 using ImovelWeb.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using FastMapper;
+
 
 namespace ImovelWeb.WebAPI.Controllers
 {
@@ -15,20 +14,29 @@ namespace ImovelWeb.WebAPI.Controllers
    
     public class CorretorController : ApiController
     {
-        private readonly RepositoryCorretor corretor = new RepositoryCorretor();
+
+        private readonly RepositoryCorretor _corretor;
+
+        public CorretorController(RepositoryCorretor corretor_)
+        {
+            _corretor = corretor_;
+        }
+
         // GET api/<controller>
+        [Route("corretor/todos")]
         public IEnumerable<Corretor> Get()
         {
-            return corretor.ObterTodos();
-        }
 
+            return _corretor.ObterTodos();
+        }
         // GET <!--http://localhost:51744/api/corretor/?valor=elir45@bol.com.br parametro -->
+        
+
         public IQueryable<Corretor> Get(string valor)
         {
-            var emailcorretor = corretor.Localizar(x => x.Email.Equals(valor.Trim()));
+            var emailcorretor = _corretor.Localizar(x => x.Email.Equals(valor.Trim()));
             return emailcorretor;
         }
-
         // POST api/<controller>
         public void Post([FromBody]string value)
         {

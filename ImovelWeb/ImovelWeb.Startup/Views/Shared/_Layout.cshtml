@@ -4,10 +4,21 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.css")" type="text/css" media="screen" />
+
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+    <div id="wrapper">
+        <div id="inner">
+            <div id="header">
+                <h1><img src="~/Content/images/logo.gif" width="742" height="63" alt="Online Movie Store" /></h1>
+                <div id="nav">
+                    <a href="">Cliente</a> | <a href="">Corretor</a>
+                </div><!-- end nav -->
+                <a href=""><img src="~/Content/images/header_1.jpg" width="744" height="145" alt="Harry Potter cd" /></a>
+                <a href=""><img src="~/Content/images/header_2.jpg" width="744" height="48" alt="" /></a>
+            </div><!-- end header -->
+            @RenderBody()
+         
 </body>
 </html>

@@ -21,12 +21,13 @@ namespace ImovelWeb.DDD.ValueObject.Model
         public string Matricula { get; set; }
 
         [StringLength(100)]
+        [Display(Name="Corretor")]
         public string NomeCorretor { get; set; }
 
         [StringLength(20)]
         public string Login { get; set; }
 
-        [StringLength(20)]
+        [StringLength(200)]
         public string Senha { get; set; }
 
         [Required]

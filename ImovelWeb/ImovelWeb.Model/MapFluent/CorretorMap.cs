@@ -11,7 +11,7 @@ namespace ImovelWeb.Model.MapFluent
             Property(c => c.Login).HasColumnType("varchar").HasMaxLength(20);
             Property(c => c.Matricula).HasColumnType("varchar").HasMaxLength(20);
             Property(c => c.NomeCorretor).HasColumnType("varchar").HasMaxLength(100);
-            Property(c => c.Senha).HasColumnType("varchar").HasMaxLength(20);
+            Property(c => c.Senha).HasColumnType("varchar").HasMaxLength(200);
             Property(c => c.Sexo).HasColumnType("varchar").HasMaxLength(10);
             Property(c => c.Telefone).HasColumnType("varchar").HasMaxLength(20);
             Property(c => c.Cidade).HasColumnType("varchar").HasMaxLength(20);

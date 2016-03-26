@@ -1,5 +1,8 @@
 ﻿using ImovelWeb.Repository;
 using System;
+using System.ServiceModel;
+using ImovelWeb.WebUtil;
+
 namespace ImovelWeb.Console
 {
     
@@ -31,7 +34,9 @@ namespace ImovelWeb.Console
                 switch (escolha)
                 {
                     case "1":
-                        System.Console.WriteLine(ImovelWeb.DDD.Entidade.StatusNivelUsuario.Administrador + "\n" + ImovelWeb.DDD.Entidade.StatusNivelUsuario.Corretor + "\n" + ImovelWeb.DDD.Entidade.StatusNivelUsuario.Usuário + "\n");
+                        System.Console.WriteLine(ImovelWeb.DDD.Entidade.StatusNivelUsuario.Administrador + "\n" + 
+                            ImovelWeb.DDD.Entidade.StatusNivelUsuario.Corretor + "\n" + 
+                            ImovelWeb.DDD.Entidade.StatusNivelUsuario.Usuário + "\n");
                         dados = Convert.ToString(System.Console.ReadLine());
                         ImovelWeb.DDD.ValueObject.Model.NivelUsuario nivel;
                         var comit = false;
@@ -46,10 +51,21 @@ namespace ImovelWeb.Console
                             comit = true;
                         }
                         if (comit)
-                            System.Console.WriteLine("Cadastro efetuado com Sucesso\n");
-                            break;
+                            System.Console.WriteLine(MensagemSistema.MSG_SUCESSO);
+                       break;
+                    case "2":
+
+                       ServicoImovelweb.MenuClient geracao = new ServicoImovelweb.MenuClient();
+                       ServicoImovelweb.XmlMenu menu = new ServicoImovelweb.XmlMenu();
+                       System.Console.WriteLine("Nome do Menu\n");
+                       menu.Nome = System.Console.ReadLine();
+                       System.Console.WriteLine("Linq");
+                       menu.Linq = System.Console.ReadLine();
+                       geracao.Gravar(menu);
+                       geracao.Close();
+                       break;
                     case "5":
-                        ImovelWeb.Console.Funcoes.ConsultaCorretores.ListCorretorAsync("http://localhost:51744/api/corretor/");
+                       ImovelWeb.Console.Funcoes.ConsultaCorretores.ListCorretorAsync("http://localhost:49162/");
                       
                         break;
 
@@ -63,8 +79,7 @@ namespace ImovelWeb.Console
                 }
 
 
-
-            } while (sair == "s" || sair == "S");
+            } while (sair == "c" || sair == "C");
 
             System.Console.ReadKey();
             

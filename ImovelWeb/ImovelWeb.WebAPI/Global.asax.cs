@@ -19,7 +19,7 @@ namespace ImovelWeb.WebAPI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
-            GlobalConfiguration.Configuration.MapHttpAttributeRoutes();
+           // GlobalConfiguration.Configuration.MapHttpAttributeRoutes();
             // formatando json 
 
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.Indent = true; // identando json 

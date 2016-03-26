@@ -5,11 +5,39 @@ using System.Web.Security;
 using ImovelWeb.Repository;
 using ImovelWeb.WorkFlow;
 using ImovelWeb.WebUtil;
+using System.Text;
+using System.Data.Entity.Core;
+using System;
 namespace ImovelWeb.Startup.Areas.Administrador.Controllers
 {
    
     public class AdminController : Controller
     {
+
+        private readonly RepositoryCorretor _corretor;
+        private readonly EmailCorretor _emailcorretor;
+        private readonly RepositoryRegistro _registro;
+        private readonly RepositoryEmpreendimento _empreendimento;
+        private readonly EmailCorretorEsqueceuSenha _emailcorretoresqueceu;
+        private readonly RepositorioFoto _foto;
+        private readonly RepositoryPorcentagem _porcentagem;
+
+        
+        // COMEÇANDO O IOC
+        public AdminController(RepositoryCorretor corretor_,EmailCorretor emailcorretor_,
+            RepositoryRegistro registro_,RepositoryEmpreendimento empreendimento_, 
+            EmailCorretorEsqueceuSenha emailcorretoresqueceu_, RepositorioFoto foto_, RepositoryPorcentagem porcentagem_)
+        {
+            _corretor = corretor_;
+            _emailcorretor = emailcorretor_;
+            _registro = registro_;
+            _empreendimento = empreendimento_;
+            _emailcorretoresqueceu = emailcorretoresqueceu_;
+            _foto = foto_;
+            _porcentagem = porcentagem_;
+
+        }
+
         // GET: Administrador/Admin
         public ActionResult Index()
         {
@@ -21,23 +49,18 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(DDD.ValueObject.Model.Usuario model)
         {
+            if (_corretor.Authenticar(model.Login, CriptografiaSenha.CalculateSHA1(model.Senha, Encoding.ASCII)))
+            { 
+                 
+                FormsAuthentication.SetAuthCookie(model.Login, false);
+                return RedirectToAction("/Home");
 
-            using (RepositoryCorretor corretor = new RepositoryCorretor())
-            {
-                
-                if (corretor.Authenticar(model.Login, model.Senha))
-                {
-                    FormsAuthentication.SetAuthCookie(model.Login, false);
-                    return RedirectToAction("/Home");
-                }
-                else
-                {
-                    ViewBag.mensagem = MensagemSistema.MSG_ERRO_SENHA_USUARIO;
-                    return View();
-                }
             }
-
-
+            else
+            {
+                ViewBag.mensagem = MensagemSistema.MSG_ERRO_SENHA_USUARIO;
+                return View();
+            }
             
         }
 
@@ -50,26 +73,27 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadcorretor( ImovelWeb.DDD.ValueObject.Model.Corretor corretor)
         {
-            var msg = string.Empty;
+            var msg = "";
             var comitar = false;
-            EmailCorretor sendecorretor = new EmailCorretor();
             if (ModelState.IsValid)
             {
-
-                using (RepositoryCorretor scorretor = new RepositoryCorretor())
+                try
                 {
-                    scorretor.Inserir(corretor);
-                    sendecorretor.EnviarEmailCorretor(corretor.Email);
-                    RepositoryRegistro registro = new RepositoryRegistro();
+
+                    corretor.Senha = CriptografiaSenha.CalculateSHA1(corretor.Senha, Encoding.ASCII);
+                    _corretor.Inserir(corretor);
+                    _emailcorretor.EnviarEmailCorretor(corretor.Email);
 
                     // inserir novo registro
-                    registro.NovoCorretor(corretor);
+                    _registro.NovoCorretor(corretor);
 
-                };    
-            
-            comitar = true;
+                    comitar = true;
+                }
+                catch (EntitySqlException f) {
 
-        }
+                    throw new Exception("Erro" + f.Message);
+                }
+            }
 
             if (comitar)
                 msg = MensagemSistema.MSG_SUCESSO;
@@ -90,8 +114,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         public ActionResult Foto() {
             
             
-            RepositoryEmpreendimento emp = new RepositoryEmpreendimento();
-            ViewData["EmpreendimentoID"] = new SelectList(emp.ObterTodos(), "EmpreendimentoID", "Nome");
+            ViewData["EmpreendimentoID"] = new SelectList(_empreendimento.ObterTodos(), "EmpreendimentoID", "Nome");
          
             return View();
         }
@@ -103,16 +126,13 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         public ActionResult Foto(HttpPostedFileBase file,Foto foto)
         {
             if (ModelState.IsValid) {
-                using (RepositorioFoto fot = new RepositorioFoto()) {
-                    fot.Inserir(foto);
-                    fot.Foto(file, foto.NomeFoto);
-                    ViewBag.msg = MensagemSistema.MSG_SUCESSO;
-                    
-                }
+                _foto.Inserir(foto);
+                _foto.Foto(file, foto.NomeFoto);
+                ViewBag.msg = MensagemSistema.MSG_SUCESSO;
+                
             }
             
-            RepositoryEmpreendimento emp = new RepositoryEmpreendimento();
-            ViewData["EmpreendimentoID"] = new SelectList(emp.ObterTodos(), "EmpreendimentoID", "Nome");
+            ViewData["EmpreendimentoID"] = new SelectList(_empreendimento.ObterTodos(), "EmpreendimentoID", "Nome");
          
             return View();
         }
@@ -120,37 +140,25 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         
         [Authorize]
         public ActionResult Imovel() {
-            RepositoryEmpreendimento emp = new RepositoryEmpreendimento();
-            ViewData["EmpreendimentoID"] = new SelectList(emp.ObterTodos(), "EmpreendimentoID", "Nome");
+            ViewData["EmpreendimentoID"] = new SelectList(_empreendimento.ObterTodos(), "EmpreendimentoID", "Nome");
          
-            RepositoryPorcentagem porc = new RepositoryPorcentagem();
-            ViewData["PorcentagemID"] = new SelectList(porc.ObterTodos(), "PorcentagemID", "Desconto");
+            ViewData["PorcentagemID"] = new SelectList(_porcentagem.ObterTodos(), "PorcentagemID", "Desconto");
             return View();
         }
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Imovel(Imovel imovel) {
-            var msg = "";
-            if (ModelState.IsValid) {
-                using (RepositoryImobiliario imo = new RepositoryImobiliario()) {
-                    //imo.Inserir(imovel);
-                    msg = MensagemSistema.MSG_SUCESSO;
-                }
-            }
 
-
-            return Json(msg, JsonRequestBehavior.AllowGet);
+            return Json(new { ok = "enviado com sucesso" }, JsonRequestBehavior.AllowGet);
         }
 
         
         [Authorize]
         public ActionResult Empreendimento() {
 
-            RepositoryCorretor corretor = new RepositoryCorretor();
-            var  idcorretor =  corretor.Localizar(c => c.Email.Equals(User.Identity.Name));
+            var  idcorretor =  _corretor.Localizar(c => c.Email.Equals(User.Identity.Name));
             foreach(var item in idcorretor){
                 ViewBag.IDCorretor = item.CorretorID;
-           
             }
 
             return View();
@@ -161,12 +169,10 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         public ActionResult Empreendimento(Empreendimento model) {
             var msg = "";
             if (ModelState.IsValid) {
-
-                using (RepositoryEmpreendimento empreendimento = new RepositoryEmpreendimento()) {
-                    empreendimento.Inserir(model);
-                    msg = MensagemSistema.MSG_SUCESSO;
-                }
+                _empreendimento.Inserir(model);
+                msg = MensagemSistema.MSG_SUCESSO;
             }
+            
 
 
             return Json(msg, JsonRequestBehavior.AllowGet);
@@ -184,19 +190,16 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         {
             var msg = "";
             if (ModelState.IsValid) {
-                using (RepositoryPorcentagem porc = new RepositoryPorcentagem())
-                {
-                    var proc = porc.Localizar(x => x.Desconto.Equals(porcentagem));
+               
+                    var proc = _porcentagem.Localizar(x => x.Desconto.Equals(porcentagem));
                     if (proc != null)
-                    {
                         msg = MensagemSistema.MSG_DESCONTO_CADASTRADO;
-                    }
                     else
                     {
-                        porc.Inserir(porcentagem);
+                        _porcentagem.Inserir(porcentagem);
                         msg = MensagemSistema.MSG_SUCESSO;
                     }
-                }
+                
             }
             return Json(msg,JsonRequestBehavior.AllowGet);
         }
@@ -204,8 +207,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         
 
         public ActionResult EsqueceuEmail(string email,string senha) {
-            EmailCorretorEsqueceuSenha sendecorretor = new EmailCorretorEsqueceuSenha();
-            sendecorretor.EnviarEmailCorretor(email,senha);        
+            _emailcorretoresqueceu.EnviarEmailCorretor(email, senha);        
             return RedirectToAction("Index");
         }
     }
