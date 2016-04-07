@@ -15,9 +15,10 @@ namespace ImovelWeb.DDD.ValueObject.Model
             Fotoes = new HashSet<Foto>();
             VendaImovels = new HashSet<VendaImovel>();
         }
-
+        [Display(Name="Imovel")]
         public int ImovelID { get; set; }
 
+        [Display(Name="Nome")]
         [StringLength(100)]
         public string NomeImovel { get; set; }
 
@@ -38,8 +39,10 @@ namespace ImovelWeb.DDD.ValueObject.Model
 
         public decimal Preco { get; set; }
 
+        [Display(Name="Porcentagem")]
         public int PorcentagemID { get; set; }
 
+        [Display(Name="Empreendimento")]
         public int EmpreendimentoID { get; set; }
 
         public virtual Empreendimento Empreendimento { get; set; }

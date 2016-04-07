@@ -185,6 +185,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Administrador\XML\menu.xml" />
     <Content Include="Areas\Content\css\style.css" />
     <Content Include="Areas\Content\images\arrow.gif" />
     <Content Include="Areas\Content\images\bg.jpg" />
@@ -236,6 +237,8 @@
     <Content Include="Areas\Content\images\user_logout.png" />
     <Content Include="Areas\Content\images\valid.png" />
     <Content Include="Areas\Content\images\warning.png" />
+    <Content Include="Areas\Content\script\angular\angular.min.js" />
+    <Content Include="Areas\Content\script\angular\empreendimento.js" />
     <Content Include="Areas\Content\script\jquery-1.7.1.min.js" />
     <Content Include="Areas\Content\script\jquery.validate.unobtrusive.js" />
     <Content Include="Areas\Content\script\jquery.validate.unobtrusive.min.js" />
@@ -330,7 +333,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50641</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50641/</IISUrl>
+          <IISUrl>http://localhost:50643/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

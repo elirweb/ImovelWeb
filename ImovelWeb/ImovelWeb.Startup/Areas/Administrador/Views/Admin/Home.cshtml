@@ -17,11 +17,12 @@
 
 <div class="center_content">  
     <div class="left_content">
+        <br />
         <div class="sidebar_search">
             <form>
-                <input type="text" name="" class="search_input" value="" placeholder="Empreendimento" />
-                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Administrador/Content/images/search.png")" />
-            </form>            
+                <input type="text" name="empimovel" id="empimovel" class="search_input" value="" placeholder="Empreendimento" ng-model="empreendimento" />
+                <img src="~/Areas/Content/images/search.png" alt="Pesquisar" title="Pesquisar" onclick="RetornandoEmpre();" style="cursor:pointer;" />
+</form>            
     </div>
     
  @Html.Partial("~/Areas/Administrador/Views/Shared/_MenuCorretor.cshtml") 
@@ -30,35 +31,24 @@
 </div>  
     
 <div class="right_content">            
-        <br /><br />
-<h2>Empreendimentos</h2> 
-
-<table id="rounded-corner" summary="2007 Major IT Companies' Profit">
-    <thead>
-<tr>
-<th scope="col" class="rounded-company"></th>
-<th scope="col" class="rounded">Empresa</th>
-<th scope="col" class="rounded">Imovel</th>
-<th scope="col" class="rounded">Preço</th>
-<th scope="col" class="rounded">Data</th>
-<th scope="col" class="rounded">Editar</th>
-<th scope="col" class="rounded-q4">Deletar</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><input type="checkbox" name="" /></td>
-<td>Tecnisa</td>
-<td>Imovel</td>
-<td>R$:5.5000,60</td>
-<td>12/05/2010</td>
-
-<td><a href="#"><img src="@Url.Content("~/Areas/Administrador/Content/images/user_edit.png")" alt="" title="" border="0" /></a></td>
-<td><a href="#" class="ask"><img src="@Url.Content("~/Areas/Administrador/Content/images/trash.png")" alt="" title="" border="0" /></a></td>
-</tr>
-</tbody>
-</table>
-
+    <br /><br />
+    <h2>Empreendimento:<span ng-bind="empreendimento" id="nomeemp"></span></h2> 
+    <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
+        <thead>
+            <tr>
+                <th scope="col" class="rounded-company"></th>
+                <th scope="col" class="rounded">Empresa</th>
+                <th scope="col" class="rounded">Imovel</th>
+                <th scope="col" class="rounded">Preço</th>
+                <th scope="col" class="rounded">Data</th>
+                <th scope="col" class="rounded">Editar</th>
+                <th scope="col" class="rounded-q4">Deletar</th>
+            </tr>
+        </thead>
+        <tbody id="dados_empreendimentos">
+            
+        </tbody>
+    </table>
 </div>
 </div>               
 <div class="clear"></div>

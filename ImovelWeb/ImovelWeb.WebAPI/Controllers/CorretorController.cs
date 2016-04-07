@@ -29,9 +29,8 @@ namespace ImovelWeb.WebAPI.Controllers
 
             return _corretor.ObterTodos();
         }
-        // GET <!--http://localhost:51744/api/corretor/?valor=elir45@bol.com.br parametro -->
-        
-
+        // GET <!--http://localhost:50642/api/corretor/?valor=elir45@bol.com.br parametro  route http://localhost:50642/elirweb@gmail.com/email -->
+        [Route("{valor}/email")]
         public IQueryable<Corretor> Get(string valor)
         {
             var emailcorretor = _corretor.Localizar(x => x.Email.Equals(valor.Trim()));

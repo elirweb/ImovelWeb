@@ -35,6 +35,7 @@ namespace ImovelWeb.Repository.Test
             };
         }
 
+       
         [TestMethod]
         [TestCategory("Inicializacao de categoria")]
         public void Verficar_Nome_Em_Branco() {

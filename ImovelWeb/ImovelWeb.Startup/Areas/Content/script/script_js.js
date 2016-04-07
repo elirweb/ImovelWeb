@@ -142,7 +142,7 @@ var EsqueceuEmailCorretor = function () {
         var enviaremail = false;
         var dados = $("#FormEmail").serialize();
         $.ajax({
-            url: 'http://localhost:51744/api/corretor/?valor=' + document.getElementById("esqueciemail").value,
+            url: 'http://localhost:50642/' + document.getElementById("esqueciemail").value + '/email/',
             type: 'get',
             datatype: 'json',
             cache: false,
@@ -208,7 +208,7 @@ var ValidadorEmail = function (email) {
             document.getElementById("Email").style.border = '1px solid #000000';
 
             $.ajax({
-                url: 'http://localhost:51744/api/corretor/?valor=' + document.getElementById("Email").value,
+                url: 'http://localhost:50642/' + document.getElementById("Email").value + '/valor',
                 type: 'get',
                 datatype: 'json',
                 success: function (data, textSaudacoes) {
@@ -245,14 +245,16 @@ var CadEmpreendimento = function () {
         cache: false,
         method: 'post',
         data: dados,
+        beforeSend: function () {
+            $("#resposta").text("Aguarde...");
+        },
         success: function (data, textSaudacoes) {
             $("#resposta").text(data);
-            $("#Nome").val() = "";
-            $("#Endereco").val() = "";
-            $("#Numero").val() = "";
-            $("#Estado").val() = "";
-            $("#Cidade").val() = "";
-            
+            document.getElementById("Nome").value = "";
+            document.getElementById("Endereco").value = "";
+            document.getElementById("Numero").value = "";
+            document.getElementById("Estado").value = "";
+            document.getElementById("Cidade").value = "";
         },
         error: function (data, textSaudacoes) {
             $("#resposta").text(data);
@@ -316,7 +318,6 @@ var CadPorcentagem = function () {
 
 $(function () {
     var selecao = "";
-    
         $("#EmpreendimentoID").change(function () {
             $.ajax({
                 url: 'http://localhost:51744/api/imovel/?valor=' + $("#EmpreendimentoID").val(),
@@ -340,3 +341,85 @@ $(function () {
      
 
 });
+
+$(function () {
+    var itens = "";
+    
+    $.ajax({
+        url: 'http://localhost:50642/empreendimento/todos',
+        type: 'get',
+        datatype: 'json',
+        cache: false,
+        method: 'get',
+        beforeSend: function () {
+            itens = "<tr>";
+            itens += "<td colspan=\"7\"><span style=\"text-align:center\">Aguarde</span></td>";
+            itens += "</tr>";
+
+        },
+        success: function (data, txtstatus) {
+            itens = "";
+            $.each(data, function (i, obj) {
+                itens += "<tr>";
+                itens += "<td><input type=\"checkbox\" name=\"\" /></td>";
+                itens += "<td>" + obj.nome + "</td>";
+                itens += "<td>imovel</td>";
+                itens += "<td>preço</td>";
+                itens += "<td>data</td>";
+                itens += "<td><a href=\"#\"><img src=\"/Areas/Content/images/user_edit.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
+                itens += "<td><a href=\"#\" class=\"ask\"><img src=\"/Areas/Content/images/trash.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
+                itens += "</tr>";
+            });
+            document.getElementById("dados_empreendimentos").innerHTML = itens;
+        }, error: function (data, txtstatus) {
+            Mensagem("Erro ao carregar itens");
+        }
+
+    });
+
+    
+});
+
+var RetornandoEmpre = function () {
+    if ($("#empimovel").val() != "") {
+        
+        var itens = "";
+
+        $.ajax({
+            url: 'http://localhost:50642/' + document.getElementById("nomeemp").innerHTML + '/buscar',
+            type: 'get',
+            datatype: 'json',
+            cache: false,
+            method: 'get',
+            beforeSend: function () {
+                itens = "<tr>";
+                itens += "<td colspan=\"7\"><span style=\"text-align:center\">Aguarde...</span></td>";
+                itens += "</tr>";
+
+            },
+            success: function (data, txtstatus) {
+                itens = "";
+                $.each(data, function (i, obj) {
+                    
+                        itens += "<tr>";
+                        itens += "<td><input type=\"checkbox\" name=\"\" /></td>";
+                        itens += "<td>" + obj.nome + "</td>";
+                        itens += "<td>imovel</td>";
+                        itens += "<td>preço</td>";
+                        itens += "<td>data</td>";
+                        itens += "<td><a href=\"#\"><img src=\"/Areas/Content/images/user_edit.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
+                        itens += "<td><a href=\"#\" class=\"ask\"><img src=\"/Areas/Content/images/trash.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
+                        itens += "</tr>";
+                    
+                });
+                document.getElementById("dados_empreendimentos").innerHTML = itens;
+            }, error: function (data, txtstatus) {
+                alert("Error em Trazer o item");
+            }
+
+        });
+
+
+    } else
+        alert("Favor informar o Empreendimento");
+};

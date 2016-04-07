@@ -11,6 +11,7 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [StringLength(100)]
         public string NomeFoto { get; set; }
 
+        [Display(Name="Imovel")]
         public int ImovelID { get; set; }
 
         public virtual Imovel Imovel { get; set; }

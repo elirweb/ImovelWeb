@@ -10,7 +10,7 @@
     <div class="header">
         <div class="logo">
             <a href="#">
-                <img src="@Url.Content("~/Areas/Administrator/Content/images/logo.gif")" alt="" title="" border="0" /></a>
+                <img src="@Url.Content("~/Areas/Administrador/Content/images/logo.gif")" alt="" title="" border="0" /></a>
         </div>
     </div>
     <div class="main_content">
@@ -23,11 +23,11 @@
         <div class="sidebar_search">
             <form>
                 <input type="text" name="" class="search_input" value="" placeholder="Empreendimento" />
-                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Administrator/Content/images/search.png")" />
+                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Content/images/search.png")" />
             </form>            
     </div>
     
- @Html.Partial("~/Areas/Administrator/Views/Shared/_MenuCorretor.cshtml") 
+ @Html.Partial("~/Areas/Administrador/Views/Shared/_MenuCorretor.cshtml") 
     
 </div>  
     
@@ -42,7 +42,7 @@
   <table>
       @Html.HiddenFor(model => model.CorretorID, new {Value= @ViewBag.IDCorretor })
       <tr>
-          <td colspan="2"><div id="resposta"></div></td>
+          <td colspan="2"><div id="resposta">@ViewBag.mensagem</div></td>
       </tr>
      
      <tr>

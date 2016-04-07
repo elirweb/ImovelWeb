@@ -60,8 +60,6 @@ namespace ImovelWeb.Repository
         public void Salvar()
         {
 
-           // _db.SaveChanges();
-
             try
             {
                 _db.SaveChanges();

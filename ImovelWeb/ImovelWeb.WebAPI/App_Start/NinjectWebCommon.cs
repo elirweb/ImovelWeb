@@ -68,6 +68,7 @@ namespace ImovelWeb.WebAPI.App_Start
         {
 
             kernel.Bind<RepositoryCorretor>().To<RepositoryCorretor>();
+            kernel.Bind<RepositoryEmpreendimento>().To<RepositoryEmpreendimento>();
        
         }        
     }

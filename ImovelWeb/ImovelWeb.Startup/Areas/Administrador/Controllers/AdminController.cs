@@ -21,12 +21,14 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         private readonly EmailCorretorEsqueceuSenha _emailcorretoresqueceu;
         private readonly RepositorioFoto _foto;
         private readonly RepositoryPorcentagem _porcentagem;
+        private readonly RepositoryImobiliario _imovel;
 
         
         // COMEÇANDO O IOC
         public AdminController(RepositoryCorretor corretor_,EmailCorretor emailcorretor_,
             RepositoryRegistro registro_,RepositoryEmpreendimento empreendimento_, 
-            EmailCorretorEsqueceuSenha emailcorretoresqueceu_, RepositorioFoto foto_, RepositoryPorcentagem porcentagem_)
+            EmailCorretorEsqueceuSenha emailcorretoresqueceu_, RepositorioFoto foto_, RepositoryPorcentagem porcentagem_,
+            RepositoryImobiliario imovel_)
         {
             _corretor = corretor_;
             _emailcorretor = emailcorretor_;
@@ -35,6 +37,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
             _emailcorretoresqueceu = emailcorretoresqueceu_;
             _foto = foto_;
             _porcentagem = porcentagem_;
+            _imovel = imovel_;
 
         }
 
@@ -133,8 +136,8 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
             }
             
             ViewData["EmpreendimentoID"] = new SelectList(_empreendimento.ObterTodos(), "EmpreendimentoID", "Nome");
-         
-            return View();
+
+            return Json(ViewBag.msg, JsonRequestBehavior.AllowGet);
         }
 
         
@@ -149,7 +152,21 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Imovel(Imovel imovel) {
 
-            return Json(new { ok = "enviado com sucesso" }, JsonRequestBehavior.AllowGet);
+            if (ModelState.IsValid)
+            {
+                _imovel.Inserir(imovel);
+                ViewBag.mensagem = MensagemSistema.MSG_SUCESSO;
+            }
+            else {
+                ViewBag.mensagem = MensagemSistema.MSG_ERRO;
+            }
+
+            ViewData["EmpreendimentoID"] = new SelectList(_empreendimento.ObterTodos(), "EmpreendimentoID", "Nome");
+
+            ViewData["PorcentagemID"] = new SelectList(_porcentagem.ObterTodos(), "PorcentagemID", "Desconto");
+
+
+            return Json(ViewBag.msg, JsonRequestBehavior.AllowGet);
         }
 
         
@@ -167,15 +184,18 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateAntiForgeryToken]
         public ActionResult Empreendimento(Empreendimento model) {
-            var msg = "";
-            if (ModelState.IsValid) {
+
+            if (ModelState.IsValid)
+            {
                 _empreendimento.Inserir(model);
-                msg = MensagemSistema.MSG_SUCESSO;
+                ViewBag.mensagem = MensagemSistema.MSG_SUCESSO;
+            }
+            else {
+                ViewBag.mensagem = MensagemSistema.MSG_ERRO;
             }
             
-
-
-            return Json(msg, JsonRequestBehavior.AllowGet);
+            return Json(ViewBag.mensagem,JsonRequestBehavior.AllowGet);
+                
         }
 
 
@@ -188,26 +208,26 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Porcentagem(Porcentagem porcentagem)
         {
-            var msg = "";
             if (ModelState.IsValid) {
                
                     var proc = _porcentagem.Localizar(x => x.Desconto.Equals(porcentagem));
                     if (proc != null)
-                        msg = MensagemSistema.MSG_DESCONTO_CADASTRADO;
+                        ViewBag.mensagem = MensagemSistema.MSG_DESCONTO_CADASTRADO;
                     else
                     {
                         _porcentagem.Inserir(porcentagem);
-                        msg = MensagemSistema.MSG_SUCESSO;
+                        ViewBag.mensagem = MensagemSistema.MSG_SUCESSO;
                     }
                 
             }
-            return Json(msg,JsonRequestBehavior.AllowGet);
+            return Json(ViewBag.mensagem, JsonRequestBehavior.AllowGet);
         }
 
         
 
         public ActionResult EsqueceuEmail(string email,string senha) {
-            _emailcorretoresqueceu.EnviarEmailCorretor(email, senha);        
+            // sem internet
+            //_emailcorretoresqueceu.EnviarEmailCorretor(email, senha);        
             return RedirectToAction("Index");
         }
     }

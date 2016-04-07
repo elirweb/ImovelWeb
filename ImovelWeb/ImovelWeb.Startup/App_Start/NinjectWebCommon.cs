@@ -70,7 +70,7 @@ namespace ImovelWeb.Startup.App_Start
             kernel.Bind<EmailCorretor>().To<EmailCorretor>();
             kernel.Bind<EmailCorretorEsqueceuSenha>().To<EmailCorretorEsqueceuSenha>();
             kernel.Bind<RepositoryRegistro>().To<RepositoryRegistro>();
-        
+            kernel.Bind<RepositoryImobiliario>().To<RepositoryImobiliario>();
         }        
     }
 }

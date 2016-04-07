@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes"?>
+<Links>
+  <Menu>
+    <Id>f78b1519-3fbe-402a-bf10-a31128b895c4</Id>
+    <Nome>Empreendimento</Nome>
+    <Link>Empreendimento</Link>
+  </Menu>
+  <Menu>
+    <Id>8bcaa216-09cb-44cc-9f00-dbc4f47e0277</Id>
+    <Nome>Foto</Nome>
+    <Link>Foto</Link>
+  </Menu>
+  <Menu>
+    <Id>affcce35-e0e2-4625-a2c4-a3e4ca131c67</Id>
+    <Nome>Chat</Nome>
+    <Link>Chat</Link>
+  </Menu>
+  <Menu>
+    <Id>28a8af19-8ed7-4ef0-ad9f-8d0f40dcb09e</Id>
+    <Nome>Imovel</Nome>
+    <Link>Imovel</Link>
+  </Menu>
+  <Menu>
+    <Id>5043b1c8-b0d2-4c33-8bc8-166c1af08f5e</Id>
+    <Nome>Porcentagem</Nome>
+    <Link>Porcentagem</Link>
+  </Menu>
+</Links>

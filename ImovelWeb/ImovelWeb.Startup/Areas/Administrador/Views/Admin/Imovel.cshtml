@@ -27,8 +27,8 @@
         <div class="sidebar_search">
             <form>
                 <input type="text" name="" class="search_input" value="" placeholder="Empreendimento" />
-                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Administrador/Content/images/search.png")" />
-            </form>            
+                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Content/images/search.png")" />
+  </form>            
     </div>
     
  @Html.Partial("~/Areas/Administrador/Views/Shared/_MenuCorretor.cshtml") 
@@ -46,7 +46,7 @@
   <table>
       
       <tr>
-          <td colspan="2"><div id="resposta"></div></td>
+          <td colspan="2"><div id="resposta">@ViewBag.mensagem</div></td>
       </tr>
      <tr>
          <td>@Html.LabelFor(model=>model.NomeImovel)</td>

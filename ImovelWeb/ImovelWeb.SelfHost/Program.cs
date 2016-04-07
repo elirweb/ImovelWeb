@@ -24,6 +24,7 @@ namespace ImovelWeb.SelfHost
 
             servidor.AddServiceEndpoint(typeof(IMenu), new WSHttpBinding(), "");
 
+            // HttpGetEnabled entrada de dados via get 
             servidor.Description.Behaviors.Add(new ServiceMetadataBehavior { HttpGetEnabled = true });
 
             servidor.Open();

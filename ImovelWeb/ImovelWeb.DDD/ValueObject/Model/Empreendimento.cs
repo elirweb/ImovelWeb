@@ -15,6 +15,7 @@ namespace ImovelWeb.DDD.ValueObject.Model
             Imovels = new HashSet<Imovel>();
         }
 
+        [Display(Name="Empreendimento")]
         public int EmpreendimentoID { get; set; }
 
         [StringLength(100)]
@@ -32,6 +33,7 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [StringLength(20)]
         public string Cidade { get; set; }
 
+        [Display(Name="Corretor")]
         public int CorretorID { get; set; }
 
         public virtual Corretor Corretor { get; set; }
