@@ -18,6 +18,11 @@ namespace ImovelWeb.Startup
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            // passagem de parametro na url 
+            routes.MapRoute("Home", "codigo/{codigoimovel_}", new { controller = "Home", action = "Comprarmoveis", codigoimovel_ = UrlParameter.Optional });
+
+            
         }
     }
 }

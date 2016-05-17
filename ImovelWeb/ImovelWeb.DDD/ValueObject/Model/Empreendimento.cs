@@ -12,10 +12,9 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empreendimento()
         {
-            Imovels = new HashSet<Imovel>();
+            Imovel = new HashSet<Imovel>();
         }
 
-        [Display(Name="Empreendimento")]
         public int EmpreendimentoID { get; set; }
 
         [StringLength(100)]
@@ -33,12 +32,11 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [StringLength(20)]
         public string Cidade { get; set; }
 
-        [Display(Name="Corretor")]
         public int CorretorID { get; set; }
 
         public virtual Corretor Corretor { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Imovel> Imovels { get; set; }
+        public virtual ICollection<Imovel> Imovel { get; set; }
     }
 }

@@ -11,7 +11,9 @@ namespace ImovelWeb.Repository
     public class RepositoryCorretor:RepositoryBase<Corretor>,ICorretor
     {
         private readonly DDD.ValueObject.Model.ImovelWeb _db;
-        public RepositoryCorretor(DDD.ValueObject.Model.ImovelWeb db_ ) : base(new DDD.ValueObject.Model.ImovelWeb()) {
+        public RepositoryCorretor(DDD.ValueObject.Model.ImovelWeb db_)
+            : base(new DDD.ValueObject.Model.ImovelWeb())
+        {
 
             _db = db_;
         }
@@ -19,7 +21,7 @@ namespace ImovelWeb.Repository
         {
             var user = false;
 
-            var elemento = (from p in _db.Corretors
+            var elemento = (from p in _db.Corretor
                             where p.Email.Equals(email) &&
                                 p.Senha.Equals(senha)
                             select p).FirstOrDefault();

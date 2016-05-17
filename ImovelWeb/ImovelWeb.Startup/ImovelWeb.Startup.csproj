@@ -258,7 +258,10 @@
     <Content Include="Content\images\photo_1.jpg" />
     <Content Include="Content\images\photo_2.jpg" />
     <Content Include="Content\images\photo_3.jpg" />
+    <Content Include="Content\script\jquery-1.7.1.min.js" />
+    <Content Include="Content\script\script_js.js" />
     <Content Include="favicon.ico" />
+    <Content Include="Fotos\playground\Playground.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Areas\Administrador\Views\web.config" />
@@ -296,6 +299,8 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <Content Include="Views\Home\LoginUsuario.cshtml" />
+    <Content Include="Views\Home\Comprarmoveis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImovelWeb.DDD\ImovelWeb.DDD.csproj">

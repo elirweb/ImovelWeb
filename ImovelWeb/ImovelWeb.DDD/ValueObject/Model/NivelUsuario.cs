@@ -12,8 +12,8 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NivelUsuario()
         {
-            Corretors = new HashSet<Corretor>();
-            Usuarios = new HashSet<Usuario>();
+            Corretor = new HashSet<Corretor>();
+            Usuario = new HashSet<Usuario>();
         }
 
         public int ID { get; set; }
@@ -22,9 +22,9 @@ namespace ImovelWeb.DDD.ValueObject.Model
         public string Perfil { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Corretor> Corretors { get; set; }
+        public virtual ICollection<Corretor> Corretor { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Usuario> Usuario { get; set; }
     }
 }

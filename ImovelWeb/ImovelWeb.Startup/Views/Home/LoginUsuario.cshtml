@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "LoginUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewData["Estado"] = new SelectList(ImovelWeb.DDD.Entidade.EstadoBrasileiro.Estado(), "Sigla", "Nome");
+  
+}
+@model ImovelWeb.DDD.ValueObject.Model.Usuario
+
+@using (Html.BeginForm("", "VerificarLogin", FormMethod.Post, new { @id = "FormLogar", @style = "margin-left:90px;" }))
+{
+     @Html.AntiForgeryToken()
+    <div style="float:left; border-right:1px solid #000000;"  >
+        <table>
+            <tr>
+                <td colspan="2" align="center" style="background:#ff0000;color:#ffffff;font-family:'Times New Roman', Times, serif;font-size:12px;font-weight:bold;">Já é Cadastrado</td>
+            </tr>
+            <tr>
+                <td colspan="2" id="mensagem" style="text-align:center;background:#ff0000;color:#ffffff;"></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Login)</td>
+                <td>@Html.TextBoxFor(model => model.Login, new { @class = "txtlogin" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Senha)</td>
+                <td>@Html.PasswordFor(model => model.Senha, new { @class = "txtlogin" })</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right" ><input type="button" onclick="AuthenticarUsuario()" value="Logar" /></td>
+            </tr>
+        </table>
+    </div>
+}
+ <div style="float:left" >
+ @using (Html.BeginForm("", "LoginUsuario", FormMethod.Post, new { @id = "FormCadastrar", @style = "margin-left:90px;" }))
+ { 
+     @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td colspan="2" align="center" style="background:#ff0000;color:#ffffff;font-family:'Times New Roman', Times, serif;font-size:12px;font-weight:bold;">Cliente Novo</td>
+            </tr>
+            <tr>
+                <td colspan="2" id="resposta" style="text-align:center;background:#ff0000;color:#ffffff;"></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Login)</td>
+                <td>@Html.TextBoxFor(model => model.Login)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Senha)</td>
+                <td>@Html.PasswordFor(model => model.Senha)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Email)</td>
+                <td>@Html.TextBoxFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Sexo)</td>
+                <td>
+                    @Html.DropDownList("sexo", (new[] {
+                        new SelectListItem {Text = "Selecione", Value="0" },
+                        new SelectListItem { Text = "Masculino", Value= Convert.ToString(ImovelWeb.DDD.ValueObject.EnumSexo.Masculino) },
+                        new SelectListItem { Text= "Feminino",Value= Convert.ToString(ImovelWeb.DDD.ValueObject.EnumSexo.Feminino) }}
+                   ))
+
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Estado)</td>
+                <td> @Html.DropDownList("Estado", "Selecione..")</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Cidade)</td>
+                <td>@Html.TextBoxFor(model=>model.Cidade)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Telefone)</td>
+                <td>@Html.TextBoxFor(model=>model.Telefone)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model=>model.Endereco)</td>
+                <td>@Html.TextBoxFor(model=>model.Endereco)</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right"><input type="button" onclick="CadastrarUsuario()" value="Cadastrar" /></td>
+            </tr>
+        </table>
+ }
+    </div>
+
+
+

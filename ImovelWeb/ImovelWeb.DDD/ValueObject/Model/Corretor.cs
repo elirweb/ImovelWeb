@@ -1,8 +1,10 @@
 namespace ImovelWeb.DDD.ValueObject.Model
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     [Table("Corretor")]
     public partial class Corretor
@@ -10,9 +12,9 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Corretor()
         {
-            Empreendimentoes = new HashSet<Empreendimento>();
-            Registroes = new HashSet<Registro>();
-            VendaImovels = new HashSet<VendaImovel>();
+            Empreendimento = new HashSet<Empreendimento>();
+            Registro = new HashSet<Registro>();
+            VendaImovel = new HashSet<VendaImovel>();
         }
 
         public int CorretorID { get; set; }
@@ -21,7 +23,6 @@ namespace ImovelWeb.DDD.ValueObject.Model
         public string Matricula { get; set; }
 
         [StringLength(100)]
-        [Display(Name="Corretor")]
         public string NomeCorretor { get; set; }
 
         [StringLength(20)]
@@ -54,12 +55,12 @@ namespace ImovelWeb.DDD.ValueObject.Model
         public virtual NivelUsuario NivelUsuario { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Empreendimento> Empreendimentoes { get; set; }
+        public virtual ICollection<Empreendimento> Empreendimento { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Registro> Registroes { get; set; }
+        public virtual ICollection<Registro> Registro { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VendaImovel> VendaImovels { get; set; }
+        public virtual ICollection<VendaImovel> VendaImovel { get; set; }
     }
 }

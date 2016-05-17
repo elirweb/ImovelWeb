@@ -1,0 +1,41 @@
+﻿@model ImovelWeb.DDD.ValueObject.Model.VendaImovel
+@using System.Security.Principal
+@{
+    ViewBag.Title = "Comprarmoveis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dados da Compra</h2>
+
+    
+@using (Html.BeginForm("", "/Home/Compramoveis", FormMethod.Post, new { @id = "FormComprar" })) { 
+    
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>Usuário Conectado</td>
+            <td>@User.Identity.Name.ToUpper()</td>
+        </tr>
+        <tr>
+            <td>Codigo do Imovel</td>
+            <td>@Html.TextBoxFor(model => model.ImovelID, new { Value = ViewBag.CodigoImovel })</td>
+        </tr>
+        <tr>
+            <td>Valor R$</td>
+            <td>@Html.TextBoxFor(model => model.TotalValor, new  {Value = ViewBag.ValorImovel })</td>
+        </tr>
+        <tr>
+            <td>Ordem de Compra</td>
+            <td>@Html.TextBoxFor(model => model.OrdemCompra, new { Value = WindowsIdentity.GetCurrent().Token.ToString() })</td>
+        </tr>
+        <tr>
+            <td>Hora</td>
+            <td>@Html.TextBoxFor(model => model.Hora, new { Value= DateTime.Now.ToShortTimeString() })</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="Gravar" onclick="GravarPedidoCompra()" /></td>
+        </tr>
+    </table>
+}
+
+

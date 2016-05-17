@@ -12,7 +12,7 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
-            VendaImovels = new HashSet<VendaImovel>();
+            VendaImovel = new HashSet<VendaImovel>();
         }
 
         public int UsuarioID { get; set; }
@@ -46,6 +46,6 @@ namespace ImovelWeb.DDD.ValueObject.Model
         public virtual NivelUsuario NivelUsuario { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VendaImovel> VendaImovels { get; set; }
+        public virtual ICollection<VendaImovel> VendaImovel { get; set; }
     }
 }

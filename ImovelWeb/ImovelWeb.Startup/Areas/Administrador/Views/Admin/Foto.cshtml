@@ -19,12 +19,7 @@
 
 <div class="center_content">  
     <div class="left_content">
-        <div class="sidebar_search">
-            <form>
-                <input type="text" name="" class="search_input" value="" placeholder="Empreendimento" />
-                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Content/images/search.png")" />
-    </form>            
-    </div>
+        <br /><br />
     
  @Html.Partial("~/Areas/Administrador/Views/Shared/_MenuCorretor.cshtml") 
               
@@ -33,7 +28,9 @@
     
 <div class="right_content">            
         <br /><br />
-<h2>Foto</h2> 
+<h2>Foto 
+    <img src="~/Areas/Content/images/error.png" title="Sair do sistema" alt="Sair do sistema" onclick="DeslogarSistema()" style="cursor:pointer;" />
+    </h2> 
                     
 <!-- montar o conteudo -->
 @using (Html.BeginForm("", "Admin/Foto", FormMethod.Post, new { @id = "FormFotos", @enctype = "multipart/form-data" }))
@@ -58,7 +55,7 @@
              @Html.LabelFor(model=>model.NomeFoto)
          </td>
          <td>
-             @Html.TextBoxFor(model => model.NomeFoto, new {@class="txtlogin" })
+             @Html.TextBoxFor(model => model.NomeFoto, new { @class = "txtlogin", @readonly = "readonly" })
          </td>
      </tr>
      <tr>

@@ -4,6 +4,6 @@ namespace ImovelWeb.DDD.Interface
 {
     public interface ImovelInterface
     {
-        //IEnumerable<Imovel> Todos();
+        float FormatarPreco(string preco);
     }
 }

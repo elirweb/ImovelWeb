@@ -24,12 +24,7 @@
 
 <div class="center_content">  
     <div class="left_content">
-        <div class="sidebar_search">
-            <form>
-                <input type="text" name="" class="search_input" value="" placeholder="Empreendimento" />
-                <input type="image" class="search_submit" src="@Url.Content("~/Areas/Content/images/search.png")" />
-  </form>            
-    </div>
+        <br /><br />
     
  @Html.Partial("~/Areas/Administrador/Views/Shared/_MenuCorretor.cshtml") 
     
@@ -37,7 +32,10 @@
     
 <div class="right_content">            
         <br /><br />
-<h2>Cadastro de Imovel</h2> 
+<h2>Cadastro de Imovel 
+    <img src="~/Areas/Content/images/error.png" title="Sair do sistema" alt="Sair do sistema" onclick="DeslogarSistema()" style="cursor:pointer;" />
+
+    </h2> 
                     
 <!-- montar o conteudo -->
 @using (Html.BeginForm("", "/Admin/Imovel", FormMethod.Post, new { @id = "FormImovel" }))
@@ -81,8 +79,7 @@
          </td>
      </tr>
       <tr>
-         <td>@Html.LabelFor(model=>model.EmpreendimentoID
-)</td>
+         <td>@Html.LabelFor(model=>model.EmpreendimentoID)</td>
          <td>@Html.DropDownList("EmpreendimentoID", "Selecione...")
             
          </td>
@@ -92,7 +89,7 @@
          <td>@Html.TextBoxFor(model=>model.Preco, new { @class = "txtlogin", @onkeydown="Formata(this,20,event,2);", @onkeypress="return SomenteNumero(event)" } )</td> <!-- onkeydown="Formata(this,20,event,2);", onkeypress="return SomenteNumero(event)"  --> 
      </tr>
      <tr>
-         <td colspan="2"><input type="button" value="Enviar" name="btnenviar" id="btn_buttonLogar" onclick="SalvarImovel();" /></td>
+         <td colspan="2"><input type="button" value="Enviar" name="btnenviar" id="btn_buttonLogar" onclick="AjsutarPreco();" /></td>
      </tr>
 
  </table>   

@@ -44,6 +44,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         // GET: Administrador/Admin
         public ActionResult Index()
         {
+         
             
             return View();
         }
@@ -67,9 +68,10 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
             
         }
 
-        public static void Deslogar() {
+        public ActionResult  Deslogar() {
 
             FormsAuthentication.SignOut();
+            return RedirectToAction("/Index");
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -128,16 +130,18 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Foto(HttpPostedFileBase file,Foto foto)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
+                _foto.ArquivarFoto(file, foto.NomeFoto);
                 _foto.Inserir(foto);
-                _foto.Foto(file, foto.NomeFoto);
                 ViewBag.msg = MensagemSistema.MSG_SUCESSO;
-                
             }
+            else
+                ViewBag.msg = MensagemSistema.MSG_ERRO;
             
             ViewData["EmpreendimentoID"] = new SelectList(_empreendimento.ObterTodos(), "EmpreendimentoID", "Nome");
 
-            return Json(ViewBag.msg, JsonRequestBehavior.AllowGet);
+            return View();
         }
 
         
@@ -152,6 +156,8 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Imovel(Imovel imovel) {
 
+            imovel.Preco = Convert.ToDecimal( _imovel.FormatarPreco(Convert.ToString(imovel.Preco)));
+
             if (ModelState.IsValid)
             {
                 _imovel.Inserir(imovel);
@@ -165,8 +171,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
 
             ViewData["PorcentagemID"] = new SelectList(_porcentagem.ObterTodos(), "PorcentagemID", "Desconto");
 
-
-            return Json(ViewBag.msg, JsonRequestBehavior.AllowGet);
+            return Json(ViewBag.mensagem, JsonRequestBehavior.AllowGet);
         }
 
         
@@ -210,14 +215,8 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         {
             if (ModelState.IsValid) {
                
-                    var proc = _porcentagem.Localizar(x => x.Desconto.Equals(porcentagem));
-                    if (proc != null)
-                        ViewBag.mensagem = MensagemSistema.MSG_DESCONTO_CADASTRADO;
-                    else
-                    {
-                        _porcentagem.Inserir(porcentagem);
-                        ViewBag.mensagem = MensagemSistema.MSG_SUCESSO;
-                    }
+                _porcentagem.Inserir(porcentagem);
+                ViewBag.mensagem = MensagemSistema.MSG_SUCESSO;
                 
             }
             return Json(ViewBag.mensagem, JsonRequestBehavior.AllowGet);

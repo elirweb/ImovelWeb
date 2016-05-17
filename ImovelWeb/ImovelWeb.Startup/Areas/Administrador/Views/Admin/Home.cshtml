@@ -22,9 +22,9 @@
             <form>
                 <input type="text" name="empimovel" id="empimovel" class="search_input" value="" placeholder="Empreendimento" ng-model="empreendimento" />
                 <img src="~/Areas/Content/images/search.png" alt="Pesquisar" title="Pesquisar" onclick="RetornandoEmpre();" style="cursor:pointer;" />
-</form>            
+</form>
     </div>
-    
+        <br /><br />
  @Html.Partial("~/Areas/Administrador/Views/Shared/_MenuCorretor.cshtml") 
               
     
@@ -32,15 +32,17 @@
     
 <div class="right_content">            
     <br /><br />
-    <h2>Empreendimento:<span ng-bind="empreendimento" id="nomeemp"></span></h2> 
+    <h2>Empreendimento:<span ng-bind="empreendimento" id="nomeemp"></span>
+        <img src="~/Areas/Content/images/error.png" title="Sair do sistema" alt="Sair do sistema" onclick="DeslogarSistema()" style="cursor:pointer;" />
+
+    </h2> 
     <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
         <thead>
             <tr>
                 <th scope="col" class="rounded-company"></th>
-                <th scope="col" class="rounded">Empresa</th>
-                <th scope="col" class="rounded">Imovel</th>
-                <th scope="col" class="rounded">Preço</th>
-                <th scope="col" class="rounded">Data</th>
+                <th scope="col" class="rounded">Empreendimento</th>
+                <th scope="col" class="rounded">Cidade</th>
+                <th scope="col" class="rounded">Estado</th>
                 <th scope="col" class="rounded">Editar</th>
                 <th scope="col" class="rounded-q4">Deletar</th>
             </tr>

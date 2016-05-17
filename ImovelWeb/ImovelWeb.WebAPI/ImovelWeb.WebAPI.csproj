@@ -203,7 +203,7 @@
     <Compile Include="Controllers\CorretorController.cs" />
     <Compile Include="Controllers\EmpreendimentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImovelControllers.cs" />
+    <Compile Include="Controllers\ImovelController.cs" />
     <Compile Include="Controllers\NivelUsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

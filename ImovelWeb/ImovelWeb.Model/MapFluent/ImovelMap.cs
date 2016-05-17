@@ -14,6 +14,7 @@ namespace ImovelWeb.Model.MapFluent
             Property(c => c.Numero).HasColumnType("varchar").HasMaxLength(10);
             Property(c => c.Estado).HasColumnType("varchar").HasMaxLength(10);
             Property(c => c.Cidade).HasColumnType("varchar").HasMaxLength(20);
+            
 
 
         }

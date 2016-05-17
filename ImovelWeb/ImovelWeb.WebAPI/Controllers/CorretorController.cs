@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using FastMapper;
 
 
 namespace ImovelWeb.WebAPI.Controllers
@@ -26,6 +25,7 @@ namespace ImovelWeb.WebAPI.Controllers
         [Route("corretor/todos")]
         public IEnumerable<Corretor> Get()
         {
+            
 
             return _corretor.ObterTodos();
         }

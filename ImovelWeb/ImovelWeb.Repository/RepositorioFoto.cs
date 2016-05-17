@@ -16,15 +16,15 @@ namespace ImovelWeb.Repository
                 if (Ext.ToLower() == ".jpg" || Ext.ToLower() == ".gif" ||
                     Ext.ToLower() == ".jpeg" || Ext.ToLower() == ".png")
                 {
-                    var diretorio = HttpContext.Current.Server.MapPath("~/") + "Fotos/" + imovel.Replace(" ", "_") + "/";
+                    var diretorio = HttpContext.Current.Server.MapPath("~/") + "Fotos/" + imovel + "/";
                     if (System.IO.Directory.Exists(diretorio))
                     {
-                        arquivo.SaveAs(diretorio + System.IO.Path.GetFileName(arquivo.FileName));
+                        arquivo.SaveAs(diretorio + System.IO.Path.GetFileName(arquivo.FileName.ToLower()));
                     }
                     else
                     {
                         System.IO.Directory.CreateDirectory(diretorio);
-                        arquivo.SaveAs(diretorio + System.IO.Path.GetFileName(arquivo.FileName));
+                        arquivo.SaveAs(diretorio + System.IO.Path.GetFileName(arquivo.FileName.ToLower()));
 
                     }
                 }
@@ -32,9 +32,6 @@ namespace ImovelWeb.Repository
             }
         }
 
-        public void Foto(HttpPostedFileBase file, string p)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

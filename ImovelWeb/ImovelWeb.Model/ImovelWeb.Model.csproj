@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201603250309371_Imovelweb.Designer.cs">
       <DependentUpon>201603250309371_Imovelweb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605170120404_Imovelweb1.cs" />
+    <Compile Include="Migrations\201605170120404_Imovelweb1.Designer.cs">
+      <DependentUpon>201605170120404_Imovelweb1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NivelUsuario.cs" />
     <Compile Include="Porcentagem.cs" />
@@ -86,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603250309371_Imovelweb.resx">
       <DependentUpon>201603250309371_Imovelweb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605170120404_Imovelweb1.resx">
+      <DependentUpon>201605170120404_Imovelweb1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

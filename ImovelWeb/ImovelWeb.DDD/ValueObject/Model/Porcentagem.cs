@@ -12,7 +12,7 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Porcentagem()
         {
-            Imovels = new HashSet<Imovel>();
+            Imovel = new HashSet<Imovel>();
         }
 
         public int PorcentagemID { get; set; }
@@ -21,6 +21,6 @@ namespace ImovelWeb.DDD.ValueObject.Model
         public string Desconto { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Imovel> Imovels { get; set; }
+        public virtual ICollection<Imovel> Imovel { get; set; }
     }
 }

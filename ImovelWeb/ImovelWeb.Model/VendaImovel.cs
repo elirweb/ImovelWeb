@@ -32,7 +32,7 @@ namespace ImovelWeb.Model
             public string OrdemCompra { get; set; }
 
             [Display(Name = "Hora")]
-            public TimeSpan Hora { get; set; }
+            public string  Hora { get; set; }
 
         }
     

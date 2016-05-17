@@ -1,11 +1,6 @@
 ﻿
-using ImovelWeb.DDD.Test.Interface;
 using ImovelWeb.DDD.Test.ValueObject.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 namespace ImovelWeb.Repository.Test
 {
     
@@ -39,8 +34,17 @@ namespace ImovelWeb.Repository.Test
         [TestMethod]
         [TestCategory("Inicializacao de categoria")]
         public void Verficar_Nome_Em_Branco() {
-           Assert.AreEqual("", corretor.Email);
-        } 
-        
+           Assert.IsNotNull(corretor.Email,"favor preencher o Email");
+        }
+ 
+        [TestMethod]
+        [TestCategory("corrigir")]
+        public void Verificar_se_contem_(){
+            var msg = "erro";
+            if (corretor.Email.IndexOf("@") > 0)
+                msg = "ok";
+           
+            Assert.AreEqual("ok",msg,"Favor colocar o @");
+        }
     }
 }

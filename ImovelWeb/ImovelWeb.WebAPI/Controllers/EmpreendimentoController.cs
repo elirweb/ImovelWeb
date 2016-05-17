@@ -1,5 +1,6 @@
 ﻿using ImovelWeb.DDD.ValueObject.Model;
 using ImovelWeb.Repository;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -13,15 +14,17 @@ namespace ImovelWeb.WebAPI.Controllers
     {
         // GET api/<controller>
         private readonly RepositoryEmpreendimento _empreendimento;
-
         public EmpreendimentoController(RepositoryEmpreendimento empreendimento_)
         {
             _empreendimento = empreendimento_;
+            
+            
         }
 
         [Route("empreendimento/todos")]
         public IEnumerable<Empreendimento> Get()
         {
+
             return _empreendimento.ObterTodos();
         }
 

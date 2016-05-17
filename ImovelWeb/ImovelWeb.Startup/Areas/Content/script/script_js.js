@@ -255,6 +255,7 @@ var CadEmpreendimento = function () {
             document.getElementById("Numero").value = "";
             document.getElementById("Estado").value = "";
             document.getElementById("Cidade").value = "";
+            
         },
         error: function (data, textSaudacoes) {
             $("#resposta").text(data);
@@ -263,6 +264,11 @@ var CadEmpreendimento = function () {
 
 };
 
+var AjsutarPreco = function () {
+
+    document.getElementById("Preco").value = document.getElementById("Preco").value.replace(".", "").replace(",", "");
+    SalvarImovel();
+};
 
 var SalvarImovel = function () {
 
@@ -275,26 +281,26 @@ var SalvarImovel = function () {
         method: 'post',
         data: dados,
         success: function (data, textSaudacoes) {
-            if (data.indexOf("Erro!") == 0) {
-                $("#resposta").text(data);
-            } else {
-                $("#resposta").text(data);
-                document.getElementById("NomeImovel").value = "";
-                document.getElementById("Descricao").value = "";
-                document.getElementById("Endereco").value = "";
-                document.getElementById("Numero").value = "";
-                document.getElementById("Estado").value = "";
-                document.getElementById("Cidade").value = "";
-                document.getElementById("IdPorcetagem_ID").value = "";
-                document.getElementById("Preco").value = "";
-
-            }
+            $("#resposta").text(data);
+            document.getElementById("NomeImovel").value = "";
+            document.getElementById("Descricao").value = "";
+            document.getElementById("Endereco").value = "";
+            document.getElementById("Numero").value = "";
+            document.getElementById("Estado").value = "";
+            document.getElementById("Cidade").value = "";
+            $('#IdPorcetagem_ID').find('option:first').attr('selected', 'selected');
+            document.getElementById("Preco").value = "";
+            $('#EmpreendimentoID').find('option:first').attr('selected', 'selected');
         },
         error: function (data, textSaudacoes) {
             $("#resposta").text(data);
+            document.getElementById("Preco").value = "";
+            $('#EmpreendimentoID').find('option:first').attr('selected', 'selected');
+            $('#IdPorcetagem_ID').find('option:first').attr('selected', 'selected');
+
         }
     });
-
+    
 };
 
 var CadPorcentagem = function () {
@@ -308,8 +314,8 @@ var CadPorcentagem = function () {
         method: 'post',
         data: dados,
         success: function (data, txtstatus) {
-            $("#Desconto").val() = "";
             $("#resposta").text(data);
+            document.getElementById("Desconto").value = "";
         }, error: function (data, txtstatus) {
             $("#resposta").text(data);
         }
@@ -320,19 +326,19 @@ $(function () {
     var selecao = "";
         $("#EmpreendimentoID").change(function () {
             $.ajax({
-                url: 'http://localhost:51744/api/imovel/?valor=' + $("#EmpreendimentoID").val(),
+                url: 'http://localhost:50642/' + $("#EmpreendimentoID").val() + '/empreendimento',
                 type: 'get',
                 datatype: 'json',
                 cache: false,
                 method: 'get',
                 success: function (data, txtstatus) {
-                    selecao = "<select name='ImovelID' id='ImovelID'>";
+                    selecao = "<select name='ImovelID' id='ImovelID' >";
+                    selecao += "<option value='0'>Selecione..</option>";
                     $.each(data, function (i, obj) {
                         selecao += "<option value= " + obj.imovelID + ">" + obj.nomeImovel + "</option>";
                     });
                     selecao += "</select>";
                     document.getElementById("txtimovel").innerHTML = selecao;
-
                 }, error: function (data, txtstatus) {
 
                 }
@@ -353,7 +359,7 @@ $(function () {
         method: 'get',
         beforeSend: function () {
             itens = "<tr>";
-            itens += "<td colspan=\"7\"><span style=\"text-align:center\">Aguarde</span></td>";
+            itens += "<td colspan=\"6\"><span style=\"text-align:center\">Aguarde</span></td>";
             itens += "</tr>";
 
         },
@@ -363,9 +369,8 @@ $(function () {
                 itens += "<tr>";
                 itens += "<td><input type=\"checkbox\" name=\"\" /></td>";
                 itens += "<td>" + obj.nome + "</td>";
-                itens += "<td>imovel</td>";
-                itens += "<td>preço</td>";
-                itens += "<td>data</td>";
+                itens += "<td>" + obj.cidade + "</td>";
+                itens += "<td>" + obj.estado + "</td>";
                 itens += "<td><a href=\"#\"><img src=\"/Areas/Content/images/user_edit.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
                 itens += "<td><a href=\"#\" class=\"ask\"><img src=\"/Areas/Content/images/trash.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
                 itens += "</tr>";
@@ -382,7 +387,7 @@ $(function () {
 
 var RetornandoEmpre = function () {
     if ($("#empimovel").val() != "") {
-        
+
         var itens = "";
 
         $.ajax({
@@ -393,24 +398,23 @@ var RetornandoEmpre = function () {
             method: 'get',
             beforeSend: function () {
                 itens = "<tr>";
-                itens += "<td colspan=\"7\"><span style=\"text-align:center\">Aguarde...</span></td>";
+                itens += "<td colspan=\"6\"><span style=\"text-align:center\">Aguarde...</span></td>";
                 itens += "</tr>";
 
             },
             success: function (data, txtstatus) {
                 itens = "";
                 $.each(data, function (i, obj) {
-                    
-                        itens += "<tr>";
-                        itens += "<td><input type=\"checkbox\" name=\"\" /></td>";
-                        itens += "<td>" + obj.nome + "</td>";
-                        itens += "<td>imovel</td>";
-                        itens += "<td>preço</td>";
-                        itens += "<td>data</td>";
-                        itens += "<td><a href=\"#\"><img src=\"/Areas/Content/images/user_edit.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
-                        itens += "<td><a href=\"#\" class=\"ask\"><img src=\"/Areas/Content/images/trash.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
-                        itens += "</tr>";
-                    
+
+                    itens += "<tr>";
+                    itens += "<td><input type=\"checkbox\" name=\"\" /></td>";
+                    itens += "<td>" + obj.nome + "</td>";
+                    itens += "<td>" + obj.cidade + "</td>";
+                    itens += "<td>" + obj.estado + "</td>";
+                    itens += "<td><a href=\"#\"><img src=\"/Areas/Content/images/user_edit.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
+                    itens += "<td><a href=\"#\" class=\"ask\"><img src=\"/Areas/Content/images/trash.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
+                    itens += "</tr>";
+
                 });
                 document.getElementById("dados_empreendimentos").innerHTML = itens;
             }, error: function (data, txtstatus) {
@@ -420,6 +424,47 @@ var RetornandoEmpre = function () {
         });
 
 
-    } else
-        alert("Favor informar o Empreendimento");
+    } else {
+        $.ajax({
+            url: 'http://localhost:50642/empreendimento/todos',
+            type: 'get',
+            datatype: 'json',
+            cache: false,
+            method: 'get',
+            beforeSend: function () {
+                itens = "<tr>";
+                itens += "<td colspan=\"6\"><span style=\"text-align:center\">Aguarde</span></td>";
+                itens += "</tr>";
+
+            },
+            success: function (data, txtstatus) {
+                itens = "";
+                $.each(data, function (i, obj) {
+                    itens += "<tr>";
+                    itens += "<td><input type=\"checkbox\" name=\"\" /></td>";
+                    itens += "<td>" + obj.nome + "</td>";
+                    itens += "<td>" + obj.cidade + "</td>";
+                    itens += "<td>" + obj.estado + "</td>";
+                    itens += "<td><a href=\"#\"><img src=\"/Areas/Content/images/user_edit.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
+                    itens += "<td><a href=\"#\" class=\"ask\"><img src=\"/Areas/Content/images/trash.png\" alt=\"\" title=\"\" border=\"0\" /></a></td>";
+                    itens += "</tr>";
+                });
+                document.getElementById("dados_empreendimentos").innerHTML = itens;
+            }, error: function (data, txtstatus) {
+                Mensagem("Erro ao carregar itens");
+            }
+
+        });
+    }
+        
 };
+
+
+var DeslogarSistema = function () {
+    if (confirm("Deseja mesmo sair do Sistema")) {
+        window.location = "Deslogar";
+            
+        
+    }
+};
+

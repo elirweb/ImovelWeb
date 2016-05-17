@@ -1,78 +1,50 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    var item = new ImovelWeb.Repository.RepositoryImobiliario().ObterTodos().OrderBy(c => c.NomeImovel);
+    //var fotos = new ImovelWeb.Repository.RepositorioFoto().ObterTodos();
+        
+          
+    int classe = 0;
+    string tipo = string.Empty;
+           
 }
+
 
         <div id="body">
             <div class="inner">
-
-                <div class="leftbox">
-                <!-- trazer imagens de imoveis do banco de dados -->
-                    <h3>Star Wars Trilogy (Widescreen Edition)</h3>
-                    <img src="~/Content/images/Churrascaria.jpg" width="93" height="95" alt="photo 1" class="left" />
-                    <p><b>Preço:</b> <b>$900.56</b> &amp; Decorado pronto para morar <b>$100</b>.</p>
-                    <p><b>Avaliação:</b> Segurança 24 horas</p>
-                    <p class="readmore"><a href="">Comprar</a></p>
-                    <div class="clear"></div>
-                </div><!-- end .leftbox -->
-                <div class="rightbox">
-                    <h3>Imovel Elirweb </h3>
-                    <img src="~/Content/images/photo_1.jpg" width="107" height="91" alt="photo 4" class="left" />
-                    <p><b>Price:</b> <b>$125</b> &amp; eligible for FREE Super Saver Shipping on orders over <b>$105</b>.</p>
-                    <p><b>Availability:</b> Usually ships within 24 hours</p>
-                    <p class="readmore"><a href="">BUY <b>NOW</b></a></p>
-                    <div class="clear"></div>
-                </div><!-- end .rightbox -->
-
                 <div class="clear br"></div>
+                
+                @foreach (var dados in item)
+                {
+                    if ((classe % 2) == 0)
+                    { tipo = "leftbox"; }
+                    else
+                    { tipo = "rightbox"; }
+                    
+                    <div class="@tipo">
+                        <h3>@dados.NomeImovel</h3>
+                        <img src="~/Fotos/playground/playground.jpg" width="93" height="101" alt="photo 2" class="left" />
+                        <p><b>Preco</b> <b> @String.Format("{0:n2}", decimal.Round( decimal.Parse(dados.Preco.ToString()),2)) </b></p>
+                        <p><b>Descrição</b> @dados.Descricao</p>
+                        <p class="readmore"><a href="/Home/Comprarmoveis/?codigoimovel_=@dados.ImovelID">Comprar <b>Agora</b></a></p>
+                        <div class="clear"></div>
+                    </div><!-- end .leftbox -->
+                    classe++;
+                }
 
-                <div class="leftbox">
-                    <h3>Harry Potter and the Prisoner of Azkaban  </h3>
-                    <img src="~/Content/images/photo_2.jpg" width="93" height="101" alt="photo 2" class="left" />
-                    <p><b>Price:</b> <b>$350</b> &amp; eligible for FREE Super Saver Shipping on orders over <b>$295</b>.</p>
-                    <p><b>Availability:</b> Usually ships within 24 hours</p>
-                    <p class="readmore"><a href="">BUY <b>NOW</b></a></p>
-                    <div class="clear"></div>
-                </div><!-- end .leftbox -->
-                <div class="rightbox">
-                    <h3>Blade - Trinity (New Platinum Series)</h3>
-                    <img src="~/Content/images/photo_2.jpg" width="90" height="103" alt="photo 5" class="left" />
-                    <p><b>Price:</b> <b>$115</b> &amp; eligible for FREE Super Saver Shipping on orders over <b>$95</b>.</p>
-                    <p><b>Availability:</b> Usually ships within 24 hours</p>
-                    <p class="readmore"><a href="">BUY <b>NOW</b></a></p>
-                    <div class="clear"></div>
-                </div><!-- end .rightbox -->
 
-                <div class="clear br"></div>
-
-                <div class="leftbox">
-                    <h3>Million Dollar Baby (Widescreen Edition)</h3>
-                    <img src="~/Content/images/photo_3.jpg" width="106" height="100" alt="photo 3" class="left" />
-                    <p><b>Price:</b> <b>$105.97</b> &amp; eligible for FREE Super Saver Shipping on orders over <b>$99</b>.</p>
-                    <p><b>Availability:</b> Usually ships within 24 hours</p>
-                    <p class="readmore"><a href="">BUY <b>NOW</b></a></p>
-                    <div class="clear"></div>
-                </div><!-- end .leftbox -->
-                <div class="rightbox">
-                    <h3>The Matrix Reloaded (Full Screen Edition)</h3>
-                    <img src="~/Content/images/photo_3.jpg" width="91" height="99" alt="photo 6" class="left" />
-                    <p><b>Price:</b> <b>$75</b> &amp; eligible for FREE Super Saver Shipping on orders over <b>$55</b>.</p>
-                    <p><b>Availability:</b> Usually ships within 24 hours</p>
-                    <p class="readmore"><a href="">BUY <b>NOW</b></a></p>
-                    <div class="clear"></div>
                 </div><!-- end .rightbox -->
 
                 <div class="clear"></div>
 
             </div><!-- end .inner -->
-        </div><!-- end body -->
-
+       
         <div class="clear"></div>
         <div id="footer">
-            Web design by <a href="">Free Website Templates</a>
+            Desenvolvido por <a href="">Elirweb Templates</a>
 
             &nbsp;
             <div id="footnav">
-                <a href="">Legal</a> | <a href="">Privacy Policy</a>
+                <a href="">Legal</a> | <a href="">Politica de Privacidade</a>
             </div><!-- end footnav -->
 
         </div><!-- end footer -->

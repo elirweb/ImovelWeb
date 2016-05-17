@@ -22,7 +22,8 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [StringLength(200)]
         public string OrdemCompra { get; set; }
 
-        public TimeSpan Hora { get; set; }
+        [StringLength(100)]
+        public string Hora { get; set; }
 
         public virtual Corretor Corretor { get; set; }
 

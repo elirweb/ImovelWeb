@@ -14,6 +14,7 @@ namespace ImovelWeb.Model.MapFluent
             ToTable("VendaImovel");
             HasKey(c => c.VendaImovelID);
             Property(c => c.OrdemCompra).HasColumnType("varchar").HasMaxLength(200);
+            Property(c=>c.Hora).HasColumnType("varchar").HasMaxLength(100);
         }
     }
 }

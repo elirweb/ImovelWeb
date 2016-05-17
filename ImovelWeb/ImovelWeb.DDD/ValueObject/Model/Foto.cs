@@ -1,7 +1,10 @@
 namespace ImovelWeb.DDD.ValueObject.Model
 {
+    using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     [Table("Foto")]
     public partial class Foto
@@ -11,7 +14,6 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [StringLength(100)]
         public string NomeFoto { get; set; }
 
-        [Display(Name="Imovel")]
         public int ImovelID { get; set; }
 
         public virtual Imovel Imovel { get; set; }

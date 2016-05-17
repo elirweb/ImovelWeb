@@ -4,6 +4,6 @@ namespace ImovelWeb.DDD.Interface
 {
     public interface IPorcentagem
     {
-        Double PorcentagemImovel(double valor); 
+        Double PorcentagemImovel(double valor,string desconto); 
     }
 }

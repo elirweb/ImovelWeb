@@ -12,13 +12,12 @@ namespace ImovelWeb.DDD.ValueObject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Imovel()
         {
-            Fotoes = new HashSet<Foto>();
-            VendaImovels = new HashSet<VendaImovel>();
+            Foto = new HashSet<Foto>();
+            VendaImovel = new HashSet<VendaImovel>();
         }
-        [Display(Name="Imovel")]
+
         public int ImovelID { get; set; }
 
-        [Display(Name="Nome")]
         [StringLength(100)]
         public string NomeImovel { get; set; }
 
@@ -39,20 +38,18 @@ namespace ImovelWeb.DDD.ValueObject.Model
 
         public decimal Preco { get; set; }
 
-        [Display(Name="Porcentagem")]
         public int PorcentagemID { get; set; }
 
-        [Display(Name="Empreendimento")]
         public int EmpreendimentoID { get; set; }
 
         public virtual Empreendimento Empreendimento { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Foto> Fotoes { get; set; }
+        public virtual ICollection<Foto> Foto { get; set; }
 
         public virtual Porcentagem Porcentagem { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VendaImovel> VendaImovels { get; set; }
+        public virtual ICollection<VendaImovel> VendaImovel { get; set; }
     }
 }
