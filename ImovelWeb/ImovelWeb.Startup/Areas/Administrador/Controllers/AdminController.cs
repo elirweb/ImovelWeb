@@ -53,7 +53,7 @@ namespace ImovelWeb.Startup.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(DDD.ValueObject.Model.Usuario model)
         {
-            if (_corretor.Authenticar(model.Login, CriptografiaSenha.CalculateSHA1(model.Senha, Encoding.ASCII)))
+            if (_corretor.Authenticar(model.Login, model.Senha))
             { 
                  
                 FormsAuthentication.SetAuthCookie(model.Login, false);
